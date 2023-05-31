@@ -84,7 +84,7 @@ h2 {
     padding: 50px 30px;
     position: relative;
     overflow: hidden;
-    background: white;
+    background: #ffffff;
     justify-content: center;
     -webkit-box-shadow: 5px 5px 25px -4px rgba(66, 68, 90, 1);
     -moz-box-shadow: 5px 5px 25px -4px rgba(66, 68, 90, 1);
@@ -99,7 +99,9 @@ h2 {
     align-items: center;
     text-align: center;
 }
-
+.tile1 img {
+    height: 150px;
+}
 
 #start .tile1:hover {
     transform: scale(1.08);

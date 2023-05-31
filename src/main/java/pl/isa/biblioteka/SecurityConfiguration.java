@@ -19,7 +19,7 @@ public class SecurityConfiguration {
     public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
         UserDetails librarian = User.withUsername("Bibliotekarz").password(passwordEncoder.encode("bibliotekarz")).roles("ADMIN").build();
 
-        UserDetails admin = User.withUsername("admin").password(passwordEncoder.encode("admin")).roles("ADMIN").build();
+        UserDetails admin = User.withUsername("Admin").password(passwordEncoder.encode("admin")).roles("ADMIN").build();
 
         UserDetails kamil = User.withUsername("Kamil").password(passwordEncoder.encode("kamil")).roles("USER").build();
 
@@ -29,7 +29,7 @@ public class SecurityConfiguration {
 
         UserDetails kinga = User.withUsername("Kinga").password(passwordEncoder.encode("kinga")).roles("USER").build();
 
-        UserDetails user = User.withUsername("user").password(passwordEncoder.encode("user")).roles("USER").build();
+        UserDetails user = User.withUsername("User").password(passwordEncoder.encode("user")).roles("USER").build();
 
         return new InMemoryUserDetailsManager(user, admin, kinga, mikolaj, przemek, kamil, librarian);
     }

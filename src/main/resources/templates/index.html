@@ -18,7 +18,7 @@
     <section th:replace="~{fragments/startSection::logoff}"></section>
 </div>
 
-<main th:replace="~{/fragments/main::main}"></main>
+<main th:replace="~{/fragments/main::main}" sec:authorize="!hasRole('ROLE_ADMIN')"></main>
 
 <footer th:replace="~{/fragments/footer::footer}"></footer>
 

@@ -65,13 +65,10 @@
                     <a class="nav-link scrollto me-1" th:href="@{/#team}">Zespół</a>
                 </li>
             </ul>
-
-
             <div style="color: yellow" th:if="${param.error}">Invalid username or password.</div>
             <div th:if="${param.logout}">You have been logged out.</div>
             <span class="navbar-brand ms-4">Witaj <span class="navbar-brand" th:text="${user}"></span></span>
             <div><a class="btn btn-light me-3" href="/logout">Logout</a></div>
-            <!--            <button class="btn btn-light me-3" href="/logout" value="Logout" type="button">Wyloguj</button>-->
         </div>
     </nav>
 </header>
