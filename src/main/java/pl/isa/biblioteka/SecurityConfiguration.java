@@ -17,65 +17,34 @@ public class SecurityConfiguration {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
-        UserDetails user = User.withUsername("user")
-                .password(passwordEncoder.encode("user"))
-                .roles("USER")
-                .build();
+        UserDetails librarian = User.withUsername("Bibliotekarz").password(passwordEncoder.encode("bibliotekarz")).roles("ADMIN").build();
 
-        UserDetails admin = User.withUsername("admin")
-                .password(passwordEncoder.encode("admin"))
-                .roles("ADMIN")
-                .build();
+        UserDetails admin = User.withUsername("admin").password(passwordEncoder.encode("admin")).roles("ADMIN").build();
 
-        UserDetails kamil = User.withUsername("Kamil")
-                .password(passwordEncoder.encode("kamil"))
-                .roles("USER")
-                .build();
+        UserDetails kamil = User.withUsername("Kamil").password(passwordEncoder.encode("kamil")).roles("USER").build();
 
-        UserDetails mikolaj = User.withUsername("Mikołaj")
-                .password(passwordEncoder.encode("mikolaj"))
-                .roles("USER")
-                .build();
+        UserDetails mikolaj = User.withUsername("Mikołaj").password(passwordEncoder.encode("mikolaj")).roles("USER").build();
 
-        UserDetails przemek = User.withUsername("Przemek")
-                .password(passwordEncoder.encode("przemek"))
-                .roles("USER")
-                .build();
+        UserDetails przemek = User.withUsername("Przemek").password(passwordEncoder.encode("przemek")).roles("USER").build();
 
-        UserDetails kinga = User.withUsername("Kinga")
-                .password(passwordEncoder.encode("kinga"))
-                .roles("USER")
-                .build();
+        UserDetails kinga = User.withUsername("Kinga").password(passwordEncoder.encode("kinga")).roles("USER").build();
 
-        return new InMemoryUserDetailsManager(user, admin, kinga, mikolaj, przemek, kamil);
+        UserDetails user = User.withUsername("user").password(passwordEncoder.encode("user")).roles("USER").build();
+
+        return new InMemoryUserDetailsManager(user, admin, kinga, mikolaj, przemek, kamil, librarian);
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize ->authorize.requestMatchers("/", "/images/**", "/css/**", "/static/font/**", "/font/**", "/**")
-                        .permitAll()
-                        .anyRequest()
-                        .authenticated())
-                .formLogin(login -> login.loginPage("/").usernameParameter("user").passwordParameter("password"))
-                .logout(logout -> logout.logoutSuccessUrl("/logout").permitAll());
+        http.authorizeHttpRequests(authorize -> authorize.requestMatchers("/", "/images/**", "/css/**", "/static/font/**", "/font/**").permitAll().anyRequest().authenticated()).formLogin(login -> login.loginPage("/").defaultSuccessUrl("/", true).usernameParameter("user").passwordParameter("password")).logout(logout -> logout.logoutSuccessUrl("/logout").permitAll());
         return http.build();
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         return encoder;
     }
-
-//    protected void logoutUser(HttpSecurity httpSecurity) throws Exception {
-//        httpSecurity
-//                .logout()
-//                .logoutSuccessUrl("index")
-//                .permitAll()
-//                .and()
-//                .authorizeHttpRequests().
-//    }
 
 }
 
@@ -101,3 +70,14 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
             .and().formLogin().loginPage("/");
     return http.build();
 }*/
+
+
+/*
+    protected void logoutUser(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                .logout()
+                .logoutSuccessUrl("index")
+                .permitAll()
+                .and()
+                .authorizeHttpRequests().
+    }*/

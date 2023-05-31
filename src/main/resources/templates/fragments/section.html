@@ -1,68 +1,15 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 
 <!--
-* start
--->
-
-<section th:fragment="start" id="start" class="d-flex align-items-center">
-    <div class="container position-relative">
-        <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-9 text-center">
-                <h1 class="library">BIBLIOTEKA</h1>
-                <h2 class="library">Witamy w naszej internetowej bibliotece</h2>
-                <form class="d-flex my-2"><input class="form-control" type="text" placeholder="Wyszukaj książkę...">
-                    <button class="btn btn-primary" type="submit">Szukaj</button>
-                </form>
-            </div>
-        </div>
-
-
-        <div class="row tiles">
-
-            <div class="col-md-6 col-lg-3 d-flex mb-5 mb-lg-0 d-flex justify-content-center">
-                <div class="tile1">
-                    <h4 class="title"><a href=""><img class="img-fluid" src="/images/add.png"></a></h4>
-                    <p class="description text-center">Dodaj książkę</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 d-flex mb-5 mb-lg-0 d-flex justify-content-center">
-                <div class="tile1">
-                    <h4 class="title"><a href=""><img class="img-fluid" src="/images/borrow.png"></a></h4>
-                    <p class="description text-center">Wypożycz książkę</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 d-flex mb-5 mb-lg-0 d-flex justify-content-center">
-                <div class="tile1">
-                    <h4 class="title"><a href=""><img class="img-fluid" src="/images/back.png"></a></h4>
-                    <p class="description text-center">Zwróć książkę</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 d-flex mb-5 mb-lg-0 d-flex justify-content-center">
-                <div class="tile1">
-                    <h4 class="title"><a th:href="@{/bookList}"><img class="img-fluid" src="/images/list.png"></a></h4>
-                    <p class="description text-center">Lista książek</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!--
 * service
 -->
 
 <section th:fragment="service" id="service" class="services section-bg pb-5">
     <div class="container pb-5 mb-5">
-
         <div class="section-title">
             <h2>Nasze usługi</h2>
             <p>Opis sekcji</p>
         </div>
-
         <div class="row pb-5">
             <div class="col-lg-4 col-md-6 d-flex ">
                 <div class="tile">
@@ -70,48 +17,39 @@
                     <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                 </div>
             </div>
-
             <div class="col-lg-4 col-md-6 d-flex mt-4 mt-md-0">
                 <div class="tile">
                     <h4><a href="#">Lorem Ipsum</a></h4>
                     <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                 </div>
             </div>
-
             <div class="col-lg-4 col-md-6 d-flex mt-4 mt-lg-0">
                 <div class="tile">
                     <h4><a href="#">Lorem Ipsum</a></h4>
                     <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                 </div>
             </div>
-
             <div class="col-lg-4 col-md-6 d-flex mt-4">
                 <div class="tile">
                     <h4><a href="#">Lorem Ipsum</a></h4>
                     <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                 </div>
             </div>
-
             <div class="col-lg-4 col-md-6 d-flex mt-4">
                 <div class="tile">
                     <h4><a href="#">Lorem Ipsum</a></h4>
                     <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                 </div>
             </div>
-
-
             <div class="col-lg-4 col-md-6 d-flex mt-4">
                 <div class="tile">
                     <h4><a href="#">Lorem Ipsum</a></h4>
                     <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                 </div>
             </div>
-
         </div>
-
     </div>
 </section>
-
 
 <!--
 * product
@@ -119,18 +57,15 @@
 
 <section th:fragment="product" id="product" class="tile2 my-5">
     <div class="container">
-
         <div class="section-title">
             <h2>Jakiś content</h2>
             <p>Opis contentu</p>
         </div>
-
         <div class="row pb-5 mb-5">
             <div class="col-lg-6 pb-5 mb-5">
                 <div class="d-inline-block"><img class="d-inline-block img-fluid pe-5" src="/images/tree.jpg"
                                                  width="700"></div>
             </div>
-
             <div class="col-lg-6">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -153,9 +88,7 @@
                     labore et dolore
                 </p>
             </div>
-
         </div>
-
     </div>
 </section>
 
@@ -166,14 +99,11 @@
 
 <section th:fragment="team" id="team">
     <div class="container pb-5 mb-5">
-
         <div class="section-title">
             <h2>Konstruktorsi</h2>
             <p>Twórcy serwisu</p>
         </div>
-
         <div class="row pb-5 mb-5">
-
             <div class="col-lg-3 col-md-6 d-flex">
                 <div class="member">
                     <div class="member-img">
@@ -187,8 +117,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="col-lg-3 col-md-6 d-flex">
                 <div class="member">
                     <div class="member-img">
@@ -202,8 +130,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="col-lg-3 col-md-6 d-flex">
                 <div class="member">
                     <div class="member-img">
@@ -217,8 +143,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="col-lg-3 col-md-6 d-flex">
                 <div class="member">
                     <div class="member-img">

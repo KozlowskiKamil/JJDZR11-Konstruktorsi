@@ -1,11 +1,22 @@
 <!doctype html>
+
 <html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
 <head th:replace="~{/fragments/head::head}"></head>
+
 <body>
-<header th:replace="~{/fragments/header::login}" ></header>
+
+<header th:replace="~{/fragments/header::login}"></header>
+
 <header th:replace="~{/fragments/header::logout}" sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"></header>
 
-<section th:replace="~{fragments/section::start}"></section>
+<div th:if="${user}">
+    <section th:replace="~{fragments/startSection::start}"></section>
+</div>
+
+<div th:if="${user == null}">
+    <section th:replace="~{fragments/startSection::logoff}"></section>
+</div>
 
 <main th:replace="~{/fragments/main::main}"></main>
 
@@ -18,4 +29,5 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
 </body>
+
 </html>

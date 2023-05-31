@@ -17,11 +17,6 @@ import java.util.Optional;
 @Controller
 public class IndexController {
 
-    @GetMapping("/static/font/css/fontello.css?continue")
-    String error() {
-        return "index";
-    }
-
     @GetMapping("/")
     String login(Principal principal, Model model, Authentication authentication) {
         if (principal != null) {
@@ -54,13 +49,12 @@ public class IndexController {
             new SecurityContextLogoutHandler().logout(request, response, authentication);
         }
 
-
-        String address = request.getHeader("Referer");
-        System.out.println("address = " + address);
-        String substring = address.substring(address.indexOf("80/") + 2);
-        System.out.println(substring);
-
         return "redirect:/";
+    }
+
+    @GetMapping("/error")
+    public String error() {
+        return "index";
     }
 }
 

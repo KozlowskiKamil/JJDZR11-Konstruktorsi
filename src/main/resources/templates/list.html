@@ -5,9 +5,7 @@
 <header th:replace="~{/fragments/header::login}" ></header>
 <header th:replace="~{/fragments/header::logout}" sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"></header>
 
-
 <main id="main">
-
     <section id="start" class="d-flex align-items-center">
         <div class="container position-relative">
             <div class="row">
@@ -66,85 +64,7 @@
     </section>
 </main>
 
-
-<footer id="footer" class="py-5">
-    <div class="footer-top py-5">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-6 col-md-6">
-                    <h4>Bootcamp Java Deweloper + Spring Boot</h4>
-                    <p>Zakres bootcampu:</p>
-                    <p>
-                        Praca z systemem Linux,
-                        praca zespołowa w Scrum,
-                        praca z systemem kontroli wersji Git,
-                        programowanie w Java,
-                        programowanie w Java z użyciem frameworka Spring,
-                        budowa prostych stron internetowych,
-                        obsługa bazy danych.
-                    </p>
-                    <p>
-                        Debugowanie,
-                        pisanie testów jednostkowych i integracyjnych,
-                        uruchamianie aplikacji w środowisku Docker,
-                        stosowanie podstawowych przekształceń kodu (refactoring),
-                        stosowanie podstawowych wzorców projektowych,
-                        udostępnianie i konsumowanie REST API,
-                        HTML, CSS, Java Script.
-                    </p>
-                </div>
-
-                <div class="col-lg-2 col-md-6 footer-links ms-5 ps-5">
-                    <h4>Nawigacja</h4>
-                    <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="/#start">Start</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="/#service">Usługi</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="/#product">Content</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="/#team">Zespół</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="template">Template</a></li>
-                    </ul>
-                </div>
-                <div style="clear: both"></div>
-            </div>
-
-        </div>
-    </div>
-    </div>
-
-    <div class="container d-md-flex d-flex justify-content-center align-items-center">
-
-        <div class="me-md-auto text-center text-md-start">
-            <div class="copyright">
-                <span id="isa" class="me-5"><a href="https://infoshareacademy.com"><img class="img-fluid"
-                                                                                        src="/images/isa.png"></a></span>
-                Copyright &copy; 2023 Konstruktorsi | Wszelkie Prawa Zastrzeżone
-
-            </div>
-
-        </div>
-
-        <div class="col-lg-6 col-md-6 d-flex justify-content-end align-items-center">
-            <div class="in"><a href="https://linkedin.com" target="_blank"><i
-                    class="icon-linkedin"></i></a>
-            </div>
-
-            <div class="yt"><a href="http://youtube.com" target="_blank"><i
-                    class="icon-youtube"></i></a>
-            </div>
-            <div class="fb"><a href="http://facebook.com" target="_blank"><i
-                    class="icon-facebook"></i></a>
-            </div>
-            <div class="gplus"><a href="https://github.com/infoshareacademy/JJDZR11-Konstruktorsi" target="_blank"><i
-                    class="icon-github-circled"></i></a>
-            </div>
-            <div class="tw"><a href="http://twitter.com" target="_blank"><i
-                    class="icon-twitter"></i></a>
-            </div>
-        </div>
-    </div>
-
-</footer>
+<footer th:replace="~{/fragments/footer::footer}"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"

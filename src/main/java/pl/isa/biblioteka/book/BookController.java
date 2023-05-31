@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,6 +29,22 @@ public class BookController {
         this.bookService = bookService;
     }
 
+
+    @GetMapping("/bookList")
+    public String listBooks(Principal principal,
+            Model model,
+            @RequestParam("page") Optional<Integer> page,
+            @RequestParam("size") Optional<Integer> size) {
+        int currentPage = page.orElse(1);
+        int pageSize = size.orElse(15);
+        extracted(model, currentPage, pageSize, booksList);
+        if (principal != null) {
+            String user = principal.getName();
+            model.addAttribute("user", user);
+            return "list";
+        } else return "list";
+    }
+
     @GetMapping("/search")
     String search(Model model, Book book) {
         model.addAttribute("book", book);
@@ -43,10 +60,10 @@ public class BookController {
 
 
     @RequestMapping(value = "/bookAuthorList", method = RequestMethod.GET)
-    public String listBooksAuthor(
+    public String listBooksAuthor(Principal principal,
             Model model,
-            @RequestParam("page") Optional<Integer> page,
-            @RequestParam("size") Optional<Integer> size) {
+                                  @RequestParam("page") Optional<Integer> page,
+                                  @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, bookListByAuthor);
@@ -91,18 +108,6 @@ public class BookController {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, searchCategoryBook);
-        return "list";
-    }
-
-
-    @RequestMapping(value = "/bookList", method = RequestMethod.GET)
-    public String listBooks(
-            Model model,
-            @RequestParam("page") Optional<Integer> page,
-            @RequestParam("size") Optional<Integer> size) {
-        int currentPage = page.orElse(1);
-        int pageSize = size.orElse(15);
-        extracted(model, currentPage, pageSize, booksList);
         return "list";
     }
 
