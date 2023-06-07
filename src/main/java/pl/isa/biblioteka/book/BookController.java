@@ -111,4 +111,18 @@ public class BookController {
         return "list";
     }
 
+    @GetMapping("/searchText")
+    public String searchByText(Model model) {
+                model.addAttribute("books", localSearchBook);
+
+        return "list";
+    }
+
+    @PostMapping("/searchByText")
+    public String searchByText(@RequestParam("text") String text, Model model) {
+        localSearchBook = bookService.searchByText(text);
+//        model.addAttribute("books", searchBook);
+        return "redirect:searchText";
+    }
+
 }

@@ -46,6 +46,13 @@ public class BookService {
         }
     }
 
+    public List<Book> searchByText(String text) {
+        List<Book> searchText = booksList.stream().filter(book -> book.getTitle().contains(text) || book.getAuthor().contains(text))
+                .collect(Collectors.toList());
+
+        return searchText;
+    }
+
     private static Predicate<Book> foundBookByTitle(String title) {
         return book -> book.getTitle().equalsIgnoreCase(title);
     }
@@ -67,27 +74,39 @@ public class BookService {
     }
 
     public List<Book> findBookByTitle(String title) {
-       List<Book> searchBook;
-        Set<String> collect = booksList.stream().map(book -> book.getTitle().toLowerCase()).collect(Collectors.toSet());
-        String searchTitle = title.toLowerCase();
-        if (collect.contains(searchTitle)) {
-            searchBook = booksList.stream().filter(book -> book.getTitle().equalsIgnoreCase(title)).toList();
-        } else {
-            searchBook = Collections.emptyList();
+        List<Book> books = booksList.stream().filter(Book::isState).toList();
+        String searchAuthor = title.toLowerCase().replaceAll("\\s","");
+
+        List<Book> searchedBooks;
+        if(!title.equals("")){
+            searchedBooks = books.stream()
+                    .filter(
+                            book -> book.getTitle()
+                                    .toLowerCase()
+                                    .replaceAll("\\s","")
+                                    .contains(searchAuthor))
+                    .collect(Collectors.toList());
+        }else {
+            searchedBooks = Collections.emptyList();
         }
-        return searchBook;
+        return searchedBooks;
+
     }
 
 
     public List<Book> filterByAuthor(String author) {
         List<Book> books = booksList.stream().filter(Book::isState).toList();
-        Set<String> authorList = books.stream().map(book2 -> book2.getAuthor().toLowerCase()).collect(Collectors.toSet());
+        String searchAuthor = author.toLowerCase().replaceAll("\\s","");
         List<Book> searchedBooks;
-        String searchAuthor = author.toLowerCase();
-        if (authorList.contains(searchAuthor)) {
-            searchedBooks = books.stream().filter(book3 -> book3.getAuthor().equalsIgnoreCase(searchAuthor)).toList();
-
-        } else {
+        if(!author.equals("")){
+            searchedBooks = books.stream()
+                    .filter(
+                            book -> book.getAuthor()
+                                    .toLowerCase()
+                                    .replaceAll("\\s","")
+                                    .contains(searchAuthor))
+                    .collect(Collectors.toList());
+        }else {
             searchedBooks = Collections.emptyList();
         }
         return searchedBooks;

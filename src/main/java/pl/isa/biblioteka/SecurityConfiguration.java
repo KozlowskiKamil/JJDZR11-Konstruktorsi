@@ -10,6 +10,11 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import pl.isa.biblioteka.user.Person;
+import pl.isa.biblioteka.user.PersonService;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Configuration
 @EnableWebSecurity
@@ -17,28 +22,32 @@ public class SecurityConfiguration {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
-        UserDetails librarian = User.withUsername("Bibliotekarz").password(passwordEncoder.encode("bibliotekarz")).roles("ADMIN").build();
 
-        UserDetails admin = User.withUsername("Admin").password(passwordEncoder.encode("admin")).roles("ADMIN").build();
+        List<Person> personList = PersonService.readUsers();
 
-        UserDetails kamil = User.withUsername("Kamil").password(passwordEncoder.encode("kamil")).roles("USER").build();
+        List<UserDetails> admin = personList.stream()
+                .map(person -> User.withUsername(person.getLogin())
+                        .password(passwordEncoder.encode(person.getPassword()))
+                        .roles(person.getLogin().equalsIgnoreCase("admin") || person.getLogin().equalsIgnoreCase("bibliotekarz") ? "ADMIN" : "USER")
+                        .build())
+                .collect(Collectors.toList());
 
-        UserDetails mikolaj = User.withUsername("Mikołaj").password(passwordEncoder.encode("mikolaj")).roles("USER").build();
-
-        UserDetails przemek = User.withUsername("Przemek").password(passwordEncoder.encode("przemek")).roles("USER").build();
-
-        UserDetails kinga = User.withUsername("Kinga").password(passwordEncoder.encode("kinga")).roles("USER").build();
-
-        UserDetails user = User.withUsername("User").password(passwordEncoder.encode("user")).roles("USER").build();
-
-        return new InMemoryUserDetailsManager(user, admin, kinga, mikolaj, przemek, kamil, librarian);
+        return new InMemoryUserDetailsManager(admin.stream().toArray(UserDetails[]::new));
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize -> authorize.requestMatchers("/", "/images/**", "/css/**", "/static/font/**", "/font/**").permitAll().anyRequest().authenticated()).formLogin(login -> login.loginPage("/").defaultSuccessUrl("/", true).usernameParameter("user").passwordParameter("password")).logout(logout -> logout.logoutSuccessUrl("/logout").permitAll());
+        http.authorizeHttpRequests(authorize -> authorize.requestMatchers("/", "/images/**", "/css/**", "/static/font/**", "/font/**", "/searchText", "/searchByText")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated())
+                .formLogin(login -> login.loginPage("/")
+                        .defaultSuccessUrl("/", true)
+                        .usernameParameter("user").passwordParameter("password"))
+                .logout(logout -> logout.logoutSuccessUrl("/logout").permitAll());
         return http.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

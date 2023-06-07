@@ -75,7 +75,8 @@
             <div class="col-xl-7 col-lg-9 text-center">
                 <h1 class="library">BIBLIOTEKA</h1>
                 <h2 class="library">Witamy w naszej internetowej bibliotece</h2>
-                <form class="d-flex my-2"><input class="form-control" type="text" placeholder="Wyszukaj książkę...">
+                <form th:action="@{/searchByText}" method="post" class="d-flex my-2">
+                    <input class="form-control" type="text" name="text" placeholder="Wyszukaj w bibliotece...">
                     <button class="btn btn-primary" type="submit">Szukaj</button>
                 </form>
             </div>
@@ -120,7 +121,8 @@
             <div class="col-xl-7 col-lg-9 text-center">
                 <h1 class="library">BIBLIOTEKA</h1>
                 <h2 class="library">Witamy w naszej internetowej bibliotece</h2>
-                <form class="d-flex my-2"><input class="form-control" type="text" placeholder="Wyszukaj książkę...">
+                <form th:action="@{/searchByText}" method="post" class="d-flex my-2">
+                    <input class="form-control" type="text" name="text" placeholder="Wyszukaj w bibliotece...">
                     <button class="btn btn-primary" type="submit">Szukaj</button>
                 </form>
             </div>
@@ -129,7 +131,7 @@
 
 
 
-            <div id="carouselExampleCaptions" class="carousel carousel-dark slide">
+<!--            <div id="carouselExampleCaptions" class="carousel carousel-dark slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -166,11 +168,11 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-            </div>
+            </div>-->
 
 
 
-<!--            <div id="carouselExample" class="carousel carousel-dark slide">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="/images/a.png" class="d-block h-50 mx-auto" alt="a">
@@ -190,7 +192,7 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-            </div>-->
+            </div>
 
 
         </div>
