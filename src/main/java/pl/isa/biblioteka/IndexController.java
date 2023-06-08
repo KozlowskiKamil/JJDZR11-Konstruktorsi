@@ -22,15 +22,36 @@ public class IndexController {
         if (principal != null) {
             String user = principal.getName();
             model.addAttribute("user", user);
-            Optional<? extends GrantedAuthority> roleAdmin = authentication.getAuthorities().stream().filter(role -> role.getAuthority().equals("ROLE_ADMIN")).findFirst();
+            Optional<? extends GrantedAuthority> roleAdmin = authentication
+                    .getAuthorities()
+                    .stream()
+                    .filter(role -> role.getAuthority().equals("ROLE_ADMIN"))
+                    .findFirst();
             if (roleAdmin.isPresent()) {
 //                return "administration";
                 return "index";
             } else return "index";
-
         } else return "index";
 
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        Authentication authentication = SecurityContextHolder
+                .getContext()
+                .getAuthentication();
+        if (authentication != null) {
+            new SecurityContextLogoutHandler()
+                    .logout(request, response, authentication);
+        }
+        return "redirect:/";
+    }
+
+    @GetMapping("/error")
+    public String error() {
+        return "index";
+    }
+
 
     @GetMapping("/administration")
     public ModelAndView administration() {
@@ -40,21 +61,6 @@ public class IndexController {
     @GetMapping("/template")
     public ModelAndView template() {
         return new ModelAndView("template");
-    }
-
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null) {
-            new SecurityContextLogoutHandler().logout(request, response, authentication);
-        }
-
-        return "redirect:/";
-    }
-
-    @GetMapping("/error")
-    public String error() {
-        return "index";
     }
 }
 

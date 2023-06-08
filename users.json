@@ -1,185 +1,168 @@
-[
-  {
-    "id": 0,
-    "login": "Bibliotekarz",
-    "password": "0000",
-    "firstName": "root",
-    "secondName": "admin",
-    "personBooks": []
-  },
-  {
-    "id": 1,
-    "login": "Kamil",
-    "password": "kamil",
-    "firstName": "Jan",
-    "secondName": "Kowalski",
-    "personBooks": [
-      {
-        "title": "Życie snem",
-        "author": "Pedro Calderon de la Barca",
-        "state": false,
-        "kind": "Dramat"
-      },
-      {
-        "title": "Nowa",
-        "author": "Panke",
-        "state": false,
-        "kind": "Horror"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "login": "Mikolas",
-    "password": "mikolaj",
-    "firstName": "Mikołas",
-    "secondName": "Nowak",
-    "personBooks": [
-      {
-        "title": "Żydek",
-        "author": "Stanisław Jachowicz",
-        "state": false,
-        "kind": "Epika"
-      },
-      {
-        "title": "Życie",
-        "author": "Karol Bołoz Antoniewicz",
-        "state": false,
-        "kind": "Liryka"
-      },
-      {
-        "title": "Życie",
-        "author": "Kazimierz Przerwa-Tetmajer",
-        "state": false,
-        "kind": "Liryka"
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "login": "Kinga",
-    "password": "kinga",
-    "firstName": "Kinga",
-    "secondName": "Mila",
-    "personBooks": []
-  },
-  {
-    "id": 4,
-    "login": "Przemek",
-    "password": "przemek",
-    "firstName": "Przemek",
-    "secondName": "Adamski",
-    "personBooks": [
-      {
-        "title": "Ostatni list",
-        "author": "Szmul Zygielbojm",
-        "state": false,
-        "kind": "Epika"
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "login": "Admin",
-    "password": "admin",
-    "firstName": "Admin",
-    "secondName": "Root",
-    "personBooks": []
-  },
-  {
-    "id": 6,
-    "login": "login",
-    "password": "pass",
-    "firstName": "first",
-    "secondName": "second",
-    "personBooks": []
-  },
-  {
-    "id": 7,
-    "login": "testowy",
-    "password": "pass",
-    "firstName": "Kamil",
-    "secondName": "K",
-    "personBooks": []
-  },
-  {
-    "id": 8,
-    "login": "Kuba",
-    "password": "pass",
-    "firstName": "Kuba",
-    "secondName": "Knapik",
-    "personBooks": []
-  },
-  {
-    "id": 9,
-    "login": "karol",
-    "password": "pass",
-    "firstName": "karol",
-    "secondName": "wojtyła",
-    "personBooks": []
-  },
-  {
-    "id": 10,
-    "login": "adams",
-    "password": "pass",
-    "firstName": "adam",
-    "secondName": "słodowy",
-    "personBooks": []
-  },
-  {
-    "id": 11,
-    "login": "kamil2k3",
-    "password": "1234",
-    "firstName": "kamil",
-    "secondName": "kozlowski",
-    "personBooks": [
-      {
-        "title": "Zwierzenia Janki",
-        "author": "Maria Konopnicka",
-        "state": false,
-        "kind": "Liryka"
-      },
-      {
-        "title": "Z legend dawnego Egiptu",
-        "author": "Bolesław Prus",
-        "state": false,
-        "kind": "Epika"
-      },
-      {
-        "title": "Oko za oko",
-        "author": "Stefan Żeromski",
-        "state": false,
-        "kind": "Epika"
-      }
-    ]
-  },
-  {
-    "id": 12,
-    "login": "test",
-    "password": "test",
-    "firstName": "test",
-    "secondName": "test",
-    "personBooks": [
-      {
-        "title": "Wiatr halny",
-        "author": "Jan Kasprowicz",
-        "state": false,
-        "kind": "Liryka"
-      },
-      {
-        "title": "Na szczycie",
-        "author": "Kazimierz Przerwa-Tetmajer",
-        "state": false,
-        "kind": "Liryka"
-      }
-    ]
-  },
-  {
-    "id": 13,
-    "login": "kamil2k",
-    "password": "1234",
-    "firstName": "Kamil",
-    "secondName": "Kozłowski",
-    "personBooks": []
-  }
-]
+[ {
+  "id" : 0,
+  "login" : "Bibliotekarz",
+  "password" : "0000",
+  "firstName" : "root",
+  "secondName" : "admin",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ ]
+}, {
+  "id" : 1,
+  "login" : "Kamil",
+  "password" : "kamil",
+  "firstName" : "Jan",
+  "secondName" : "Kowalski",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ {
+    "title" : "Życie snem",
+    "author" : "Pedro Calderon de la Barca",
+    "state" : false,
+    "kind" : "Dramat"
+  }, {
+    "title" : "Nowa",
+    "author" : "Panke",
+    "state" : false,
+    "kind" : "Horror"
+  } ]
+}, {
+  "id" : 2,
+  "login" : "Mikolas",
+  "password" : "mikolaj",
+  "firstName" : "Mikołas",
+  "secondName" : "Nowak",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ {
+    "title" : "Żydek",
+    "author" : "Stanisław Jachowicz",
+    "state" : false,
+    "kind" : "Epika"
+  }, {
+    "title" : "Życie",
+    "author" : "Karol Bołoz Antoniewicz",
+    "state" : false,
+    "kind" : "Liryka"
+  }, {
+    "title" : "Życie",
+    "author" : "Kazimierz Przerwa-Tetmajer",
+    "state" : false,
+    "kind" : "Liryka"
+  } ]
+}, {
+  "id" : 3,
+  "login" : "Kinga",
+  "password" : "kinga",
+  "firstName" : "Kinga",
+  "secondName" : "Mila",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ ]
+}, {
+  "id" : 4,
+  "login" : "Przemek",
+  "password" : "przemek",
+  "firstName" : "Przemek",
+  "secondName" : "Adamski",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ {
+    "title" : "Ostatni list",
+    "author" : "Szmul Zygielbojm",
+    "state" : false,
+    "kind" : "Epika"
+  } ]
+}, {
+  "id" : 5,
+  "login" : "Admin",
+  "password" : "admin",
+  "firstName" : "Admin",
+  "secondName" : "Root",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ ]
+}, {
+  "id" : 6,
+  "login" : "login",
+  "password" : "pass",
+  "firstName" : "first",
+  "secondName" : "second",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ ]
+}, {
+  "id" : 7,
+  "login" : "testowy",
+  "password" : "pass",
+  "firstName" : "Kamil",
+  "secondName" : "K",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ ]
+}, {
+  "id" : 8,
+  "login" : "Kuba",
+  "password" : "pass",
+  "firstName" : "Kuba",
+  "secondName" : "Knapik",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ ]
+}, {
+  "id" : 9,
+  "login" : "karol",
+  "password" : "pass",
+  "firstName" : "karol",
+  "secondName" : "wojtyła",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ ]
+}, {
+  "id" : 10,
+  "login" : "adams",
+  "password" : "pass",
+  "firstName" : "adam",
+  "secondName" : "słodowy",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ ]
+}, {
+  "id" : 11,
+  "login" : "kamil2k3",
+  "password" : "1234",
+  "firstName" : "kamil",
+  "secondName" : "kozlowski",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ {
+    "title" : "Zwierzenia Janki",
+    "author" : "Maria Konopnicka",
+    "state" : false,
+    "kind" : "Liryka"
+  }, {
+    "title" : "Z legend dawnego Egiptu",
+    "author" : "Bolesław Prus",
+    "state" : false,
+    "kind" : "Epika"
+  }, {
+    "title" : "Oko za oko",
+    "author" : "Stefan Żeromski",
+    "state" : false,
+    "kind" : "Epika"
+  } ]
+}, {
+  "id" : 12,
+  "login" : "test",
+  "password" : "test",
+  "firstName" : "test",
+  "secondName" : "test",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ {
+    "title" : "Wiatr halny",
+    "author" : "Jan Kasprowicz",
+    "state" : false,
+    "kind" : "Liryka"
+  }, {
+    "title" : "Na szczycie",
+    "author" : "Kazimierz Przerwa-Tetmajer",
+    "state" : false,
+    "kind" : "Liryka"
+  } ]
+}, {
+  "id" : 13,
+  "login" : "kamil2k",
+  "password" : "1234",
+  "firstName" : "Kamil",
+  "secondName" : "Kozłowski",
+  "email" : "kamil@kamil.pl",
+  "personBooks" : [ ]
+} ]
