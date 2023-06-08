@@ -32,7 +32,8 @@
             <form th:action="@{/}" method="post" class="d-flex ms-3">
                 <input class="form-control me-2" type="text" name="user" placeholder="Login" aria-label="Login">
                 <input class="form-control me-2" type="password" name="password" placeholder="Hasło" aria-label="Hasło">
-                <button class="btn btn-light me-3" value="Log in" type="submit">Zaloguj</button>
+                <button class="btn btn-light me-2" value="Log in" type="submit">Zaloguj</button>
+                <a th:href="@{/register}" class="btn btn-light me-3" role="button">Rejestracja</a>
             </form>
         </div>
     </nav>
@@ -68,7 +69,7 @@
             <div style="color: yellow" th:if="${param.error}">Invalid username or password.</div>
             <div th:if="${param.logout}">You have been logged out.</div>
             <span class="navbar-brand ms-4">Witaj <span class="navbar-brand" th:text="${user}"></span></span>
-            <div><a class="btn btn-light me-3" href="/logout">Logout</a></div>
+            <div><a class="btn btn-light me-3" href="/logout">Wyloguj</a></div>
         </div>
     </nav>
 </header>

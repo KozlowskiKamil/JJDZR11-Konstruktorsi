@@ -2,7 +2,7 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="~{/fragments/head::head}"></head>
 <body>
-<header th:replace="~{/fragments/header::login}" ></header>
+<header th:replace="~{/fragments/header::login}"></header>
 <header th:replace="~{/fragments/header::logout}" sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"></header>
 
 <main id="main">
@@ -10,8 +10,9 @@
         <div class="container position-relative">
             <div class="row">
                 <div class="cntentTemplate">
-
-                    <h1>Lista książek w bibliotece</h1>
+                    <div><img class="d-flex" src="/images/6.png"><br>
+                    </div>
+                    <h1 style="color: dodgerblue">Lista książek w bibliotece</h1><br>
                     <a class="btn btn-secondary me-2" th:href="@{/search}">WYSZUKAJ</a>
                     <section class="" th:if="${books.isEmpty()}">
                         <h3> Brak wyszukiwanego elementu</h3>

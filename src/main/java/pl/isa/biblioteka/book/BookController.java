@@ -46,10 +46,15 @@ public class BookController {
     }
 
     @GetMapping("/search")
-    String search(Model model, Book book) {
+    String search(Principal principal, Model model, Book book) {
         model.addAttribute("book", book);
         model.addAttribute("category", bookService.availableCategory());
-        return "search";
+
+        if (principal != null) {
+            String user = principal.getName();
+            model.addAttribute("user", user);
+            return "search";
+        } else return "search";
     }
 
     @PostMapping("/filterAuthor")
@@ -67,7 +72,11 @@ public class BookController {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, bookListByAuthor);
-        return "list";
+        if (principal != null) {
+            String user = principal.getName();
+            model.addAttribute("user", user);
+            return "list";
+        } else return "list";
     }
 
     @PostMapping("/filterTitle")
@@ -83,14 +92,18 @@ public class BookController {
 //    }
 
     @RequestMapping(value = "/bookByTitle", method = RequestMethod.GET)
-    public String listBooksTitle(
+    public String listBooksTitle(Principal principal,
             Model model,
             @RequestParam("page") Optional<Integer> page,
             @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, searchBook);
-        return "list";
+        if (principal != null) {
+            String user = principal.getName();
+            model.addAttribute("user", user);
+            return "list";
+        } else return "list";
     }
 
     @PostMapping("/filterCategory")
@@ -101,21 +114,40 @@ public class BookController {
 
 
     @RequestMapping(value = "/bookByCategory", method = RequestMethod.GET)
-    public String listBooksCategory(
+    public String listBooksCategory(Principal principal,
             Model model,
             @RequestParam("page") Optional<Integer> page,
             @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, searchCategoryBook);
-        return "list";
+        if (principal != null) {
+            String user = principal.getName();
+            model.addAttribute("user", user);
+            return "list";
+        } else return "list";
     }
 
-    @GetMapping("/searchText")
+/*    @GetMapping("/searchText")
     public String searchByText(Model model) {
                 model.addAttribute("books", localSearchBook);
 
         return "list";
+    }*/
+
+    @GetMapping("/searchText")
+    public String searchByText(Principal principal,
+            Model model,
+            @RequestParam("page") Optional<Integer> page,
+            @RequestParam("size") Optional<Integer> size) {
+        int currentPage = page.orElse(1);
+        int pageSize = size.orElse(20);
+        extracted(model, currentPage, pageSize, localSearchBook);
+        if (principal != null) {
+            String user = principal.getName();
+            model.addAttribute("user", user);
+            return "list";
+        } else return "list";
     }
 
     @PostMapping("/searchByText")

@@ -34,7 +34,7 @@
                         <select th:field="*{category}"
                                 class="form-control ml-2"
                                 onchange="this.form.submit()">
-                            <option th:value="${null}" placeholder="kategorie" >kategoria</option>
+                            <option th:value="${null}" placeholder="kategorie" >Kategoria</option>
                             <option th:each="categ : ${category}"
                                     th:value="${categ}"
                                     th:text="${categ.toUpperCase()}"></option>
