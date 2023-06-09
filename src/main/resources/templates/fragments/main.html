@@ -1,0 +1,12 @@
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+
+<!--<main th:fragment="main" sec:authorize="hasRole('ROLE_ADMIN')" id="main">-->
+<main th:fragment="main">
+
+    <section th:replace="~{/fragments/section::service}"></section>
+
+    <section th:replace="~{/fragments/section::product}"></section>
+
+    <section th:replace="~{/fragments/section::team}"></section>
+
+</main>

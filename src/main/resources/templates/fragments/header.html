@@ -1,0 +1,75 @@
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+
+<!--
+* login
+-->
+
+<header th:fragment="login" id="header" class="fixed-top">
+    <nav class="navbar navbar-dark bg-primary navbar-expand-xl">
+        <a class="navbar-brand" th:href="@{/}"><img src="/images/logo.png"
+                                                    height="36"
+                                                    class="d-inline-block ms-3 me-3 align-bottom">BIBLIOTEKA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link scrollto me-1" th:href="@{/#start}">Start</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto me-1" th:href="@{/#service}">Top</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto me-1" th:href="@{/#product}">Content</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto me-1" th:href="@{/#team}">Zespół</a>
+                </li>
+            </ul>
+            <div style="color: yellow" th:if="${param.error}">Invalid username or password.</div>
+            <div th:if="${param.logout}">You have been logged out.</div>
+            <form th:action="@{/}" method="post" class="d-flex ms-3">
+                <input class="form-control me-2" type="text" name="user" placeholder="Login" aria-label="Login">
+                <input class="form-control me-2" type="password" name="password" placeholder="Hasło" aria-label="Hasło">
+                <button class="btn btn-light me-2" value="Log in" type="submit">Zaloguj</button>
+                <a th:href="@{/register}" class="btn btn-light me-3" role="button">Rejestracja</a>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<!--
+* logout
+-->
+
+<header th:fragment="logout" id="header" class="fixed-top">
+    <nav class="navbar navbar-dark bg-primary navbar-expand-xl">
+        <a class="navbar-brand" th:href="@{/}"><img src="/images/logo.png"
+                                                    height="36"
+                                                    class="d-inline-block ms-3 me-3 align-bottom">BIBLIOTEKA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link scrollto me-1" th:href="@{/#start}">Start</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto me-1" th:href="@{/#service}">Top</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto me-1" th:href="@{/#product}">Content</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto me-1" th:href="@{/#team}">Zespół</a>
+                </li>
+            </ul>
+            <div style="color: yellow" th:if="${param.error}">Invalid username or password.</div>
+            <div th:if="${param.logout}">You have been logged out.</div>
+            <span class="navbar-brand ms-4">Witaj <span class="navbar-brand" th:text="${user}"></span></span>
+            <div><a class="btn btn-light me-3" href="/logout">Wyloguj</a></div>
+        </div>
+    </nav>
+</header>

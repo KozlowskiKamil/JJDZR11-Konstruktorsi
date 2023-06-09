@@ -1,52 +1,78 @@
-<!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Promoceny - zbiór najlepszych promocji</title>
-    <style>
-        section{
-            width: 100%;
-        }
-        h1{
-            text-align: center;
-        }
-        table {
-            width: 90%; margin-left: auto; margin-right: auto;
-            text-align: center;
-            border: 1px solid black;
-            border-collapse: collapse;
-
-        }
-
-        td {
-            border: 1px solid black;
-            padding: 20px;
-        }
-    </style>
-</head>
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="~{/fragments/head::head}"></head>
 <body>
-<h1>Lista książek w naszej bibliotece</h1>
-<section>
-    <table>
-        <thead>
-        <tr>
-            <td >Nr</td>
-            <td >Tytuł</td>
-            <td>Autro</td>
-            <td>Kategoria</td>
-            <td>Status</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="book,staus:${books}" th:object="${book}">
-            <td th:text="${staus.count}"></td>
-            <td th:text="*{title}"></td>
-            <td th:text="|*{author}|"></td>
-            <td th:text="|*{category} |"></td>
-            <td th:text="*{state}? 'Dostępna' : 'Nie dostepna'"></td>
-        </tr>
-        </tbody>
-    </table>
-</section>
+<header th:replace="~{/fragments/header::login}"></header>
+<header th:replace="~{/fragments/header::logout}" sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"></header>
+
+<main id="main">
+    <section id="start" class="d-flex align-items-center">
+        <div class="container position-relative">
+            <div class="row">
+                <div class="cntentTemplate">
+                    <div style="display: flex; justify-content: center; margin-top: -50px">
+                        <img class="d-flex" src="/images/baseBooks.png">
+                    </div>
+                    <h3 style="color: #5e5e5e; text-align: center; font-weight: bold">Lista książek w bibliotece</h1><br>
+                    <a class="btn btn-secondary me-2" th:href="@{/search}">WYSZUKAJ</a>
+                    <section class="" th:if="${books.isEmpty()}">
+                        <h3> Brak wyszukiwanego elementu</h3>
+                    </section>
+
+                    <section th:if="${!books.isEmpty()}">
+
+                        <table id="table" class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">Nr</th>
+                                <th scope="col">Tytuł</th>
+                                <th scope="col">Autro</th>
+                                <th scope="col">Kategoria</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="book,staus:${books}" th:object="${book}">
+                                <td th:text="${staus.count}"></td>
+                                <td th:text="*{title}"></td>
+                                <td th:text="|*{author}|"></td>
+                                <td th:text="|*{category} |"></td>
+                                <td th:text="*{state}? 'Dostępna' : 'Niedostępna'"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <div class="text-center">
+                        <ul>
+                            <li th:if="${firstPage}" class="pagination">
+                                <a th:href="@{/bookList?size=15&amp;page=1}" th:text="${1}">First</a>
+                            </li>
+                            <li th:if="${books.totalPages > 0}" class="pagination"
+                                th:each="pageNumber : ${pageNumbers}">
+                                <a th:href="@{/bookList(size=${books.size}, page=${pageNumber})}"
+                                   th:text=${pageNumber}
+                                   th:class="${pageNumber==books.number + 1} ? active"></a>
+                            </li>
+                            <li th:if="${lastPage}" class="pagination">
+                                <a th:href="@{/bookList?size=15&amp;page={page}(page=${books.totalPages})}"
+                                   th:text="${books.totalPages}">Last</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{/fragments/footer::footer}"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+        integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
 </body>
 </html>

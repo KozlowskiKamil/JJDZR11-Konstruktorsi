@@ -3,6 +3,7 @@ package pl.isa.biblioteka.file;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.isa.biblioteka.book.Book;
 import pl.isa.biblioteka.book.BookRepository;
+import pl.isa.biblioteka.book.BookService;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +27,7 @@ public class FolderBooks {
 
     public static void saveBooks() {
         ObjectMapper mapper = new ObjectMapper();
-        List<Book> booksList = BookRepository.booksList;
+        List<Book> booksList = BookService.booksList;
         try {
             mapper.writeValue(new File("booksFile.json"), booksList);
         } catch (IOException e) {

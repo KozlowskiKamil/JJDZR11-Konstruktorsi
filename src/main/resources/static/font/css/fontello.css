@@ -54,15 +54,15 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-twitter:before { content: '\f099'; font-size: 76px; margin-top: 20px; } /* '' */
-.icon-facebook:before { content: '\f09a'; font-size: 76px; margin-top: 20px;} /* '' */
-.icon-github-circled:before { content: '\f09b'; font-size: 76px; margin-top: 20px;} /* '' */
-.icon-linkedin:before { content: '\f0e1'; font-size: 76px; margin-top: 20px;} /* '' */
-.icon-youtube-squared:before { content: '\f166'; font-size: 76px; margin-top: 20px;} /* '' */
-.icon-youtube:before { content: '\f167'; font-size: 76px; margin-top: 20px;} /* '' */
-.icon-facebook-official:before { content: '\f230'; font-size: 76px; margin-top: 20px;} /* '' */
-.icon-github-squared:before { content: '\f300'; font-size: 76px; margin-top: 20px;} /* '' */
-.icon-twitter-squared:before { content: '\f304'; font-size: 76px; margin-top: 20px;} /* '' */
-.icon-linkedin-squared:before { content: '\f30c'; font-size: 76px; margin-top: 20px;} /* '' */
-.icon-gplus:before { content: '\f30f'; font-size: 76px; margin-top: 20px;} /* '' */
-.icon-gplus-circled:before { content: '\f310'; font-size: 76px; margin-top: 20px;} /* '' */
+.icon-twitter:before { content: '\f099'; font-size: 41px; } /* '' */
+.icon-facebook:before { content: '\f09a'; font-size: 41px;} /* '' */
+.icon-github-circled:before { content: '\f09b'; font-size: 41px;} /* '' */
+.icon-linkedin:before { content: '\f0e1'; font-size: 41px;} /* '' */
+.icon-youtube-squared:before { content: '\f166'; font-size: 41px;} /* '' */
+.icon-youtube:before { content: '\f167'; font-size: 41px;} /* '' */
+.icon-facebook-official:before { content: '\f230'; font-size: 41px;} /* '' */
+.icon-github-squared:before { content: '\f300'; font-size: 41px;} /* '' */
+.icon-twitter-squared:before { content: '\f304'; font-size: 41px;} /* '' */
+.icon-linkedin-squared:before { content: '\f30c'; font-size: 41px;} /* '' */
+.icon-gplus:before { content: '\f30f'; font-size: 41px;} /* '' */
+.icon-gplus-circled:before { content: '\f310'; font-size: 41px;} /* '' */

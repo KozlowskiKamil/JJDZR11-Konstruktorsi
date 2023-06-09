@@ -84,7 +84,7 @@ h2 {
     padding: 50px 30px;
     position: relative;
     overflow: hidden;
-    background: white;
+    background: #ffffff;
     justify-content: center;
     -webkit-box-shadow: 5px 5px 25px -4px rgba(66, 68, 90, 1);
     -moz-box-shadow: 5px 5px 25px -4px rgba(66, 68, 90, 1);
@@ -99,7 +99,9 @@ h2 {
     align-items: center;
     text-align: center;
 }
-
+.tile1 img {
+    height: 150px;
+}
 
 #start .tile1:hover {
     transform: scale(1.08);
@@ -197,7 +199,7 @@ h2 {
 
 #team {
     padding-top: 120px;
-    padding-bottom: 40px
+    padding-bottom: 41px
 }
 
 
@@ -232,7 +234,7 @@ h2 {
 }
 
 .gplus a:hover {
-    color: #d95333;
+    color: #171515;
     cursor: pointer;
 }
 
@@ -256,4 +258,69 @@ h2 {
 .in a:hover {
     color: #0e76a8;
     cursor: pointer;
+}
+
+.copyright {
+    font-size: 14px;
+}
+
+#isa img {
+    width: auto;
+    height: auto;
+}
+
+#isa:hover img {
+    content: url('/images/isaHover.png');
+    /*
+    content: url('/static/images/isaHover.png');
+    */
+}
+
+
+
+.footer-links {
+    padding-right: 2px;
+    font-size: 18px;
+    line-height: 2;
+}
+
+.cntentTemplate {
+    margin-top: 90px;
+    padding-top: 60px;
+    position: relative;
+    font-size: 26px;
+}
+.cntentTemplate h1 {
+    text-align: center;
+    font-size: 44px;
+    color: dimgray;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#table {
+    background-color: white;
+    font-size: 20px;
+
+}
+#log {
+    color: white;
+    font-size: 20px;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 5px 5px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: gray;
+    color: white;
+    border-radius: 2px;
 }
