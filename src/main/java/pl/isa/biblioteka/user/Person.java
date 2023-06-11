@@ -19,6 +19,11 @@ public class Person {
     public List<Book> personBooks = new ArrayList<>();
 
     public Person(String login, String password, String firstName, String secondName, String email) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.email = email;
     }
 
     public Person() {

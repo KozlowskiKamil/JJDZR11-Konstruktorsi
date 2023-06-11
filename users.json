@@ -1,5 +1,5 @@
 [ {
-  "id" : 0,
+  "id" : 1,
   "login" : "Bibliotekarz",
   "password" : "0000",
   "firstName" : "root",
@@ -7,7 +7,7 @@
   "email" : "kamil@kamil.pl",
   "personBooks" : [ ]
 }, {
-  "id" : 1,
+  "id" : 2,
   "login" : "Kamil",
   "password" : "kamil",
   "firstName" : "Jan",
@@ -25,7 +25,7 @@
     "kind" : "Horror"
   } ]
 }, {
-  "id" : 2,
+  "id" : 3,
   "login" : "Mikolas",
   "password" : "mikolaj",
   "firstName" : "Mikołas",
@@ -48,7 +48,7 @@
     "kind" : "Liryka"
   } ]
 }, {
-  "id" : 3,
+  "id" : 4,
   "login" : "Kinga",
   "password" : "kinga",
   "firstName" : "Kinga",
@@ -56,7 +56,7 @@
   "email" : "kamil@kamil.pl",
   "personBooks" : [ ]
 }, {
-  "id" : 4,
+  "id" : 5,
   "login" : "Przemek",
   "password" : "przemek",
   "firstName" : "Przemek",
@@ -69,7 +69,7 @@
     "kind" : "Epika"
   } ]
 }, {
-  "id" : 5,
+  "id" : 6,
   "login" : "Admin",
   "password" : "admin",
   "firstName" : "Admin",
@@ -77,7 +77,7 @@
   "email" : "kamil@kamil.pl",
   "personBooks" : [ ]
 }, {
-  "id" : 6,
+  "id" : 7,
   "login" : "login",
   "password" : "pass",
   "firstName" : "first",
@@ -85,7 +85,7 @@
   "email" : "kamil@kamil.pl",
   "personBooks" : [ ]
 }, {
-  "id" : 7,
+  "id" : 8,
   "login" : "testowy",
   "password" : "pass",
   "firstName" : "Kamil",
@@ -93,7 +93,7 @@
   "email" : "kamil@kamil.pl",
   "personBooks" : [ ]
 }, {
-  "id" : 8,
+  "id" : 9,
   "login" : "Kuba",
   "password" : "pass",
   "firstName" : "Kuba",
@@ -101,7 +101,7 @@
   "email" : "kamil@kamil.pl",
   "personBooks" : [ ]
 }, {
-  "id" : 9,
+  "id" : 10,
   "login" : "karol",
   "password" : "pass",
   "firstName" : "karol",
@@ -109,7 +109,7 @@
   "email" : "kamil@kamil.pl",
   "personBooks" : [ ]
 }, {
-  "id" : 10,
+  "id" : 11,
   "login" : "adams",
   "password" : "pass",
   "firstName" : "adam",
@@ -117,7 +117,7 @@
   "email" : "kamil@kamil.pl",
   "personBooks" : [ ]
 }, {
-  "id" : 11,
+  "id" : 12,
   "login" : "kamil2k3",
   "password" : "1234",
   "firstName" : "kamil",
@@ -140,7 +140,7 @@
     "kind" : "Epika"
   } ]
 }, {
-  "id" : 12,
+  "id" : 13,
   "login" : "test",
   "password" : "test",
   "firstName" : "test",
@@ -158,11 +158,27 @@
     "kind" : "Liryka"
   } ]
 }, {
-  "id" : 13,
+  "id" : 14,
   "login" : "kamil2k",
   "password" : "1234",
   "firstName" : "Kamil",
   "secondName" : "Kozłowski",
   "email" : "kamil@kamil.pl",
+  "personBooks" : [ ]
+}, {
+  "id" : 15,
+  "login" : "a",
+  "password" : "a",
+  "firstName" : "a",
+  "secondName" : "a",
+  "email" : "a@a",
+  "personBooks" : [ ]
+}, {
+  "id" : 16,
+  "login" : "kamil111",
+  "password" : "a",
+  "firstName" : "a",
+  "secondName" : "a",
+  "email" : "a@a",
   "personBooks" : [ ]
 } ]

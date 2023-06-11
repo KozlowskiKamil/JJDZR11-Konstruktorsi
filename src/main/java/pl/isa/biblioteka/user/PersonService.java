@@ -23,18 +23,21 @@ public class PersonService {
 
     public static List<Person> users = new ArrayList<>(PersonService.readUsers());
 
-    public final  List<Person> personList;
+    public final List<Person> personList;
     public List<Book> personBooks = new ArrayList<>();
 
     public PersonService(List<Person> personList) {
         this.personList = personList;
     }
 
-    public void registerUser(Person person) {
-/*        int nextId = users.size() + 1;
-        person.setId(nextId);*/
-        users.add(person);
-        saveUsers();
+    public void registerUserId(Person person) {
+        boolean userExist = users.stream().anyMatch(user -> user.getLogin().equalsIgnoreCase(person.getLogin()));
+        if (!userExist) {
+            int nextId = users.size() + 1;
+            person.setId(nextId);
+            users.add(person);
+            saveUsers();
+        } else throw new IllegalArgumentException("Użytkownik istnieje");
     }
 
     public void delete(Integer id) {

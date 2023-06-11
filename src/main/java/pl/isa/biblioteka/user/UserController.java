@@ -33,8 +33,6 @@ public class UserController {
     public String getUsers(Principal principal, Model model) {
         List<Person> users = PersonService.readUsers();
         model.addAttribute("users", users);
-        personService.readUsers();
-        personService.saveUsers();
         if (principal != null) {
             String user = principal.getName();
             model.addAttribute("user", user);
@@ -62,13 +60,25 @@ public class UserController {
 
     @PostMapping("/register")
     public String addUser(@RequestParam String login, @RequestParam String password, @RequestParam String firstName, @RequestParam String secondName, @RequestParam String email, Model model) {
-        personService.readUsers();
+//        personService.readUsers();
         Person newPerson = new Person(login, password, firstName, secondName, email);
-        personService.registerUser(newPerson);
-        List<Person> persons = PersonService.readUsers();
-        model.addAttribute("persons", persons);
+        personService.registerUserId(newPerson);
+/*        List<Person> persons = PersonService.readUsers();
+        model.addAttribute("persons", persons);*/
         personService.saveUsers();
         return "register";
+    }
+
+
+    @PostMapping("/edit")
+    public String editUser(@RequestParam String login, @RequestParam String password, @RequestParam String firstName, @RequestParam String secondName, @RequestParam String email, Model model) {
+        personService.readUsers();
+        List<Person> persons = PersonService.readUsers();
+        model.addAttribute("persons", persons);
+        Person newPerson = new Person(login, password, firstName, secondName, email);
+        personService.registerUserId(newPerson);
+        personService.saveUsers();
+        return "usersList";
     }
 
 }
