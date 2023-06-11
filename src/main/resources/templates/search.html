@@ -4,7 +4,7 @@
 <head th:replace="~{/fragments/head::head}"></head>
 
 <body>
-<header th:replace="~{/fragments/header::login}" ></header>
+<header th:replace="~{/fragments/header::login}"></header>
 <header th:replace="~{/fragments/header::logout}" sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"></header>
 
 <main id="main">
@@ -13,34 +13,45 @@
         <div class="container position-relative">
             <div class="row">
                 <div class="cntentTemplate">
+                    <div style="display: flex; justify-content: center; margin-top: -50px">
+                        <img class="d-flex" src="/images/search.png">
+                    </div>
+                    <h3 style="color: #5e5e5e; text-align: center; font-weight: bold">Wyszukiwanie zaawansowane</h3><br>
+                    <a class="btn btn-info me-2 mb-2" th:href="@{/bookList}">Lista książek</a>
+                    <div style="width: auto; justify-content: center;"
+                         class="border border-primary rounded-4 bg-light p-4 shadow-lg p-3 mb-5 bg-white rounded">
 
-                    <h1>PO CZYM CHCESZ WYSZUKAĆ KSIĄŻKĘ</h1>
 
-                    <form th:action="@{/filterAuthor}" method="post" th:object="${book}" class="mb-5">
-                        <label>
-                            WYSZUKAJ KSIĄŻKĘ PO AUTORZE
-                            <input th:field="*{author}" type="text" name="text">
-                        </label>
-                        <button type="submit">Dodaj</button>
-                    </form>
-                    <form th:action="@{/filterTitle}" method="post" th:object="${book}" class="mb-5">
-                        <label>
-                            WYSZUKAJ KSIĄŻKĘ PO TYTULE
-                            <input th:field="*{title}" type="text" name="text">
-                        </label>
-                        <button type="submit">Dodaj</button>
-                    </form>
-                    <form th:action="@{/filterCategory}" method="post" th:object="${book}" class="mb-5">
-                        <select th:field="*{category}"
-                                class="form-control ml-2"
-                                onchange="this.form.submit()">
-                            <option th:value="${null}" placeholder="kategorie" >Kategoria</option>
-                            <option th:each="categ : ${category}"
-                                    th:value="${categ}"
-                                    th:text="${categ.toUpperCase()}"></option>
-                        </select>
-                    </form>
 
+                        <form th:action="@{/searchByText}" method="post" class="d-flex my-2 mb-5">
+                            <input class="form-control form-control-primary" type="text" name="text"
+                                   placeholder="Wyszukaj dowolną frazę w bibliotece...">
+                            <button class="btn btn-primary ms-4" type="submit">Szukaj</button>
+                        </form>
+
+                        <form th:action="@{/filterAuthor}" method="post" th:object="${book}" class="d-flex my-2 mb-5">
+                            <input th:field="*{author}" class="form-control form-control-primary" type="text"
+                                   name="text" placeholder="Wyszukaj autora...">
+                            <button class="btn btn-primary ms-4" type="submit">Szukaj</button>
+                        </form>
+
+                        <form th:action="@{/filterTitle}" method="post" th:object="${book}" class="d-flex my-2 mb-5">
+                            <input th:field="*{title}" class="form-control form-control-primary" type="text" name="text"
+                                   placeholder="Wyszukaj tytuł...">
+                            <button class="btn btn-primary ms-4" type="submit">Szukaj</button>
+                        </form>
+
+                        <form th:action="@{/filterCategory}" method="post" th:object="${book}" class="mb-5">
+                            <select th:field="*{category}"
+                                    class="form-control ml-2"
+                                    onchange="this.form.submit()">
+                                <option th:value="${null}" placeholder="kategorie">Kategoria</option>
+                                <option th:each="categ : ${category}"
+                                        th:value="${categ}"
+                                        th:text="${categ.toUpperCase()}"></option>
+                            </select>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

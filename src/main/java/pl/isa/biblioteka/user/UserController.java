@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -21,15 +22,36 @@ public class UserController {
     }
 
 
-    @GetMapping("/users")
-    public String getUsers(Model model) {
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") Integer id) {
+        personService.delete(id);
+        return "redirect:/usersList";
+    }
+
+
+    @GetMapping("/usersList")
+    public String getUsers(Principal principal, Model model) {
         List<Person> users = PersonService.readUsers();
         model.addAttribute("users", users);
         personService.readUsers();
         personService.saveUsers();
-        return "users";
+        if (principal != null) {
+            String user = principal.getName();
+            model.addAttribute("user", user);
+            return "usersList";
+        } else return "usersList";
     }
 
+    @GetMapping("/myBooks")
+    public String myBooks(Principal principal, Model model) {
+        List<Person> users = PersonService.readUsers();
+        model.addAttribute("users", users);
+        if (principal != null) {
+            String user = principal.getName();
+            model.addAttribute("user", user);
+            return "myBooks";
+        } else return "myBooks";
+    }
 
 
     @GetMapping("/register")

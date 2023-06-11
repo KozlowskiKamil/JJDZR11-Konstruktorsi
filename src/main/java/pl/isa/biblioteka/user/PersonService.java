@@ -37,6 +37,11 @@ public class PersonService {
         saveUsers();
     }
 
+    public void delete(Integer id) {
+        users.removeIf(s -> s.getId().equals(id));
+        saveUsers();
+    }
+
 
     public static List<Person> readUsers() {
         try {
