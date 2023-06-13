@@ -23,20 +23,33 @@ public class PersonService {
 
     public static List<Person> users = new ArrayList<>(PersonService.readUsers());
 
-    public final  List<Person> personList;
+    public final List<Person> personList;
     public List<Book> personBooks = new ArrayList<>();
 
     public PersonService(List<Person> personList) {
         this.personList = personList;
     }
 
-    public void registerUser(Person person) {
-/*        int nextId = users.size() + 1;
-        person.setId(nextId);*/
+    public static String registerUserId(Person person) {
+        boolean userExist = users.stream().anyMatch(user -> user.getLogin().equalsIgnoreCase(person.getLogin()));
+        if (userExist) {
+            return "Login jest już zajęty, wybierz inny login";
+        }
+        int nextId = users.size() + 1;
+        person.setId(nextId);
         users.add(person);
-        saveUsers();
+        return "Dodano użytkownika, możesz się zalogować";
     }
 
+    public PersonDTO findId(Integer id) {
+        Person person = users.stream().filter(user -> user.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Nie ma takiego użytkownika"));
+        return new PersonDTO(person.getId(), person.getLogin(), person.getPassword(), person.getFirstName(), person.getSecondName(), person.getEmail());
+    }
+
+    public void delete(Integer id) {
+        users.removeIf(s -> s.getId().equals(id));
+        saveUsers();
+    }
 
     public static List<Person> readUsers() {
         try {

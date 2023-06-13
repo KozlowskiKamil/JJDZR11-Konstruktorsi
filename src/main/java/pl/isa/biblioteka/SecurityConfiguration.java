@@ -35,9 +35,12 @@ public class SecurityConfiguration {
         return new InMemoryUserDetailsManager(admin.stream().toArray(UserDetails[]::new));
     }
 
-    @Bean
+
+
+    @Bean      //KONFIGURACJA BEZ ZABEZPIECZENIA authorizeHttpRequests
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize -> authorize
+        http.csrf().disable()
+                .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/**", "/images/**", "/css/**", "/static/font/**", "/font/**",
                                 "/searchText", "/searchByText", "/list", "/bookList/**", "/register")
                         .permitAll()
@@ -46,7 +49,7 @@ public class SecurityConfiguration {
                 .formLogin(login -> login.loginPage("/")
                         .defaultSuccessUrl("/", true)
                         .usernameParameter("user").passwordParameter("password"))
-                .logout(logout -> logout.logoutSuccessUrl("/logout").permitAll());
+                .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
         return http.build();
     }
 
@@ -58,6 +61,22 @@ public class SecurityConfiguration {
     }
 
 }
+
+/*    @Bean      KONFIGURACJA Z ZABEZPIECZENIEM
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/", "/images/**", "/css/**", "/static/font/**", "/font/**",
+                                "/searchText", "/searchByText", "/list", "/bookList/**", "/register")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated())
+                .formLogin(login -> login.loginPage("/")
+                        .defaultSuccessUrl("/", true)
+                        .usernameParameter("user").passwordParameter("password"))
+                .logout(logout -> logout.logoutSuccessUrl("/logout").permitAll());
+        return http.build();
+    }*/
+
 
 
 //todo skasować przed wgraniem na main
