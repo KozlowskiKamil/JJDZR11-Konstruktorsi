@@ -18,11 +18,7 @@ public class IndexController {
         if (principal != null) {
             String user = principal.getName();
             model.addAttribute("user", user);
-            Optional<? extends GrantedAuthority> roleAdmin = authentication
-                    .getAuthorities()
-                    .stream()
-                    .filter(role -> role.getAuthority().equals("ROLE_ADMIN"))
-                    .findFirst();
+            Optional<? extends GrantedAuthority> roleAdmin = authentication.getAuthorities().stream().filter(role -> role.getAuthority().equals("ROLE_ADMIN")).findFirst();
             if (roleAdmin.isPresent()) {
 //                return "administration";
                 return "index";

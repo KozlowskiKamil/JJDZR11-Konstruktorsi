@@ -47,8 +47,7 @@ public class BookService {
     }
 
     public List<Book> searchByText(String text) {
-        List<Book> searchText = booksList.stream().filter(book -> book.getTitle().contains(text) || book.getAuthor().contains(text))
-                .collect(Collectors.toList());
+        List<Book> searchText = booksList.stream().filter(book -> book.getTitle().contains(text) || book.getAuthor().contains(text)).collect(Collectors.toList());
 
         return searchText;
     }
@@ -62,11 +61,7 @@ public class BookService {
     }
 
     public void showAllBorrowedBooks() {
-        booksList.stream().filter(book -> !book.isState())
-                .forEach(el -> System.out.printf("Tytuł: %s, Autor: %s, Kategoria: %s  %n",
-                        el.getTitle(),
-                        el.getAuthor(),
-                        el.getCategory()));
+        booksList.stream().filter(book -> !book.isState()).forEach(el -> System.out.printf("Tytuł: %s, Autor: %s, Kategoria: %s  %n", el.getTitle(), el.getAuthor(), el.getCategory()));
     }
 
     public List<Book> showAllBooks() {
@@ -75,38 +70,25 @@ public class BookService {
 
     public List<Book> findBookByTitle(String title) {
         List<Book> books = booksList.stream().filter(Book::isState).toList();
-        String searchAuthor = title.toLowerCase().replaceAll("\\s","");
+        String searchAuthor = title.toLowerCase().replaceAll("\\s", "");
 
         List<Book> searchedBooks;
-        if(!title.equals("")){
-            searchedBooks = books.stream()
-                    .filter(
-                            book -> book.getTitle()
-                                    .toLowerCase()
-                                    .replaceAll("\\s","")
-                                    .contains(searchAuthor))
-                    .collect(Collectors.toList());
-        }else {
+        if (!title.equals("")) {
+            searchedBooks = books.stream().filter(book -> book.getTitle().toLowerCase().replaceAll("\\s", "").contains(searchAuthor)).collect(Collectors.toList());
+        } else {
             searchedBooks = Collections.emptyList();
         }
         return searchedBooks;
 
     }
 
-
     public List<Book> filterByAuthor(String author) {
         List<Book> books = booksList.stream().filter(Book::isState).toList();
-        String searchAuthor = author.toLowerCase().replaceAll("\\s","");
+        String searchAuthor = author.toLowerCase().replaceAll("\\s", "");
         List<Book> searchedBooks;
-        if(!author.equals("")){
-            searchedBooks = books.stream()
-                    .filter(
-                            book -> book.getAuthor()
-                                    .toLowerCase()
-                                    .replaceAll("\\s","")
-                                    .contains(searchAuthor))
-                    .collect(Collectors.toList());
-        }else {
+        if (!author.equals("")) {
+            searchedBooks = books.stream().filter(book -> book.getAuthor().toLowerCase().replaceAll("\\s", "").contains(searchAuthor)).collect(Collectors.toList());
+        } else {
             searchedBooks = Collections.emptyList();
         }
         return searchedBooks;
@@ -117,7 +99,7 @@ public class BookService {
         Set<String> availableCategory = availableCategory();
         List<Book> sortedBook;
         if (availableCategory.contains(category)) {
-             sortedBook = books.stream().filter(book -> book.getCategory().equalsIgnoreCase(category)).toList();
+            sortedBook = books.stream().filter(book -> book.getCategory().equalsIgnoreCase(category)).toList();
         } else {
             sortedBook = Collections.emptyList();
         }
@@ -129,25 +111,23 @@ public class BookService {
         return availableCategory;
     }
 
-
-    public static Page<Book> findPaginated(Pageable pageable, List<Book> bookList){
+    public static Page<Book> findPaginated(Pageable pageable, List<Book> bookList) {
         int pageSize = pageable.getPageSize();
         int currentPage = pageable.getPageNumber();
         int startItem = currentPage * pageSize;
         List<Book> list;
-        if(bookList.size()< startItem){
+        if (bookList.size() < startItem) {
             list = Collections.emptyList();
-        }else {
-            int toIndex= Math.min(startItem + pageSize, bookList.size());
-            list = bookList.subList(startItem,toIndex);
+        } else {
+            int toIndex = Math.min(startItem + pageSize, bookList.size());
+            list = bookList.subList(startItem, toIndex);
         }
-        Page<Book> bookPage = new PageImpl<>(list, PageRequest.of(currentPage,pageSize),bookList.size());
+        Page<Book> bookPage = new PageImpl<>(list, PageRequest.of(currentPage, pageSize), bookList.size());
         return bookPage;
     }
 
-
     public static void extracted(Model model, int currentPage, int pageSize, List<Book> bookListCheck) {
-        Page<Book> bookPage = findPaginated(PageRequest.of(currentPage - 1, pageSize),bookListCheck);
+        Page<Book> bookPage = findPaginated(PageRequest.of(currentPage - 1, pageSize), bookListCheck);
         model.addAttribute("books", bookPage);
 
         int totalPages = bookPage.getTotalPages();
@@ -163,12 +143,8 @@ public class BookService {
             if (currentPage < totalPages - 5) {
                 model.addAttribute("lastPage", totalPages);
             }
-            List<Integer> pageNumbers = IntStream.rangeClosed(startPage, endPage)
-                    .boxed()
-                    .collect(Collectors.toList());
+            List<Integer> pageNumbers = IntStream.rangeClosed(startPage, endPage).boxed().collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
         }
     }
-
-
 }

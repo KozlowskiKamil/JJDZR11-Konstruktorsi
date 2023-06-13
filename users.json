@@ -165,4 +165,36 @@
   "secondName" : "Kozłowski",
   "email" : "kamil@kamil.pl",
   "personBooks" : [ ]
+}, {
+  "id" : 16,
+  "login" : "b",
+  "password" : "b",
+  "firstName" : "b",
+  "secondName" : "b",
+  "email" : "b@b",
+  "personBooks" : [ ]
+}, {
+  "id" : 17,
+  "login" : "c",
+  "password" : "c",
+  "firstName" : "c",
+  "secondName" : "c",
+  "email" : "c@c",
+  "personBooks" : [ ]
+}, {
+  "id" : 18,
+  "login" : "d",
+  "password" : "d",
+  "firstName" : "d",
+  "secondName" : "d",
+  "email" : "d@d",
+  "personBooks" : [ ]
+}, {
+  "id" : 15,
+  "login" : "a",
+  "password" : "a",
+  "firstName" : "a",
+  "secondName" : "a",
+  "email" : "a@a",
+  "personBooks" : [ ]
 } ]

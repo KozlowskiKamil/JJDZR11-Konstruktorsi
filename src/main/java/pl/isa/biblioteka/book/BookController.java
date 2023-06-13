@@ -1,7 +1,5 @@
 package pl.isa.biblioteka.book;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,8 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static pl.isa.biblioteka.book.BookService.booksList;
 import static pl.isa.biblioteka.book.BookService.extracted;
@@ -29,12 +25,8 @@ public class BookController {
         this.bookService = bookService;
     }
 
-
     @GetMapping("/bookList")
-    public String listBooks(Principal principal,
-            Model model,
-            @RequestParam("page") Optional<Integer> page,
-            @RequestParam("size") Optional<Integer> size) {
+    public String listBooks(Principal principal, Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, booksList);
@@ -63,12 +55,8 @@ public class BookController {
         return "redirect:bookAuthorList";
     }
 
-
     @RequestMapping(value = "/bookAuthorList", method = RequestMethod.GET)
-    public String listBooksAuthor(Principal principal,
-            Model model,
-                                  @RequestParam("page") Optional<Integer> page,
-                                  @RequestParam("size") Optional<Integer> size) {
+    public String listBooksAuthor(Principal principal, Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, bookListByAuthor);
@@ -85,17 +73,8 @@ public class BookController {
         return "redirect:bookByTitle";
     }
 
-//    @GetMapping("/bookByTitle")
-//    String bookTitle(Model model) {
-//        model.addAttribute("books", searchBook);
-//        return "list";
-//    }
-
     @RequestMapping(value = "/bookByTitle", method = RequestMethod.GET)
-    public String listBooksTitle(Principal principal,
-            Model model,
-            @RequestParam("page") Optional<Integer> page,
-            @RequestParam("size") Optional<Integer> size) {
+    public String listBooksTitle(Principal principal, Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, searchBook);
@@ -112,12 +91,8 @@ public class BookController {
         return "redirect:bookByCategory";
     }
 
-
     @RequestMapping(value = "/bookByCategory", method = RequestMethod.GET)
-    public String listBooksCategory(Principal principal,
-            Model model,
-            @RequestParam("page") Optional<Integer> page,
-            @RequestParam("size") Optional<Integer> size) {
+    public String listBooksCategory(Principal principal, Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, searchCategoryBook);
@@ -128,18 +103,8 @@ public class BookController {
         } else return "list";
     }
 
-/*    @GetMapping("/searchText")
-    public String searchByText(Model model) {
-                model.addAttribute("books", localSearchBook);
-
-        return "list";
-    }*/
-
     @GetMapping("/searchText")
-    public String searchByText(Principal principal,
-            Model model,
-            @RequestParam("page") Optional<Integer> page,
-            @RequestParam("size") Optional<Integer> size) {
+    public String searchByText(Principal principal, Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
         extracted(model, currentPage, pageSize, localSearchBook);
@@ -156,5 +121,18 @@ public class BookController {
 //        model.addAttribute("books", searchBook);
         return "redirect:searchText";
     }
-
 }
+
+
+//    @GetMapping("/bookByTitle")
+//    String bookTitle(Model model) {
+//        model.addAttribute("books", searchBook);
+//        return "list";
+//    }
+
+/*    @GetMapping("/searchText")
+    public String searchByText(Model model) {
+                model.addAttribute("books", localSearchBook);
+
+        return "list";
+    }*/
