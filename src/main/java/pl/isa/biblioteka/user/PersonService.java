@@ -41,9 +41,9 @@ public class PersonService {
         return "Dodano użytkownika, możesz się zalogować";
     }
 
-    public Person findId(Integer id) {
-        users.stream().filter(user -> user.getLogin().equals(id));
-        return new Person();
+    public PersonDTO findId(Integer id) {
+        Person person = users.stream().filter(user -> user.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Nie ma takiego użytkownika"));
+        return new PersonDTO(person.getId(), person.getLogin(), person.getPassword(), person.getFirstName(), person.getSecondName(), person.getEmail());
     }
 
     public void delete(Integer id) {

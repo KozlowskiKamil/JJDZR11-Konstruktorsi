@@ -165,12 +165,4 @@
   "secondName" : "Kozłowski",
   "email" : "kamil@kamil.pl",
   "personBooks" : [ ]
-}, {
-  "id" : 15,
-  "login" : "a",
-  "password" : "a",
-  "firstName" : "a",
-  "secondName" : "a",
-  "email" : "a@a",
-  "personBooks" : [ ]
 } ]

@@ -64,7 +64,7 @@ public class UserController {
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Integer id, Model model) {
-        Person personDTO = personService.findId(id);
+        PersonDTO personDTO = personService.findId(id);
         model.addAttribute("personDTO", personDTO );
         return "edit";
     }
