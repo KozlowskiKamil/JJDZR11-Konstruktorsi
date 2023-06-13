@@ -3,16 +3,15 @@ package pl.isa.biblioteka.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
 
+import static pl.isa.biblioteka.user.PersonService.registerUserId;
+
 @Controller
 public class UserController {
-
 
     private final PersonService personService;
 
@@ -21,13 +20,11 @@ public class UserController {
         this.personService = personService;
     }
 
-
     @GetMapping("/delete")
     public String delete(@RequestParam("id") Integer id) {
         personService.delete(id);
         return "redirect:/usersList";
     }
-
 
     @GetMapping("/usersList")
     public String getUsers(Principal principal, Model model) {
@@ -51,34 +48,34 @@ public class UserController {
         } else return "myBooks";
     }
 
-
     @GetMapping("/register")
     public String register() {
         return "register";
     }
 
-
     @PostMapping("/register")
     public String addUser(@RequestParam String login, @RequestParam String password, @RequestParam String firstName, @RequestParam String secondName, @RequestParam String email, Model model) {
-//        personService.readUsers();
         Person newPerson = new Person(login, password, firstName, secondName, email);
-        personService.registerUserId(newPerson);
-/*        List<Person> persons = PersonService.readUsers();
-        model.addAttribute("persons", persons);*/
+        String result = registerUserId(newPerson);
+        model.addAttribute("mesage", result);
         personService.saveUsers();
         return "register";
     }
 
-
-    @PostMapping("/edit")
-    public String editUser(@RequestParam String login, @RequestParam String password, @RequestParam String firstName, @RequestParam String secondName, @RequestParam String email, Model model) {
-        personService.readUsers();
-        List<Person> persons = PersonService.readUsers();
-        model.addAttribute("persons", persons);
-        Person newPerson = new Person(login, password, firstName, secondName, email);
-        personService.registerUserId(newPerson);
-        personService.saveUsers();
-        return "usersList";
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Integer id, Model model) {
+        Person personDTO = personService.findId(id);
+        model.addAttribute("personDTO", personDTO );
+        return "edit";
     }
 
+    @PostMapping("/edit/{id}")
+    public String editUser(@PathVariable("id") Integer id, @ModelAttribute PersonDTO personDTO) {
+        personService.delete(id);
+//        List<Person> persons = PersonService.readUsers();
+        Person person = new Person(personDTO.getLogin(),personDTO.getPassword(),personDTO.getFirstName(),personDTO.getSecondName(),personDTO.getEmail());
+        registerUserId(person);
+        personService.saveUsers();
+        return "redirect:/usersList";
+    }
 }

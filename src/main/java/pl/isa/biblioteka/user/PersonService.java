@@ -30,21 +30,26 @@ public class PersonService {
         this.personList = personList;
     }
 
-    public void registerUserId(Person person) {
+    public static String registerUserId(Person person) {
         boolean userExist = users.stream().anyMatch(user -> user.getLogin().equalsIgnoreCase(person.getLogin()));
-        if (!userExist) {
-            int nextId = users.size() + 1;
-            person.setId(nextId);
-            users.add(person);
-            saveUsers();
-        } else throw new IllegalArgumentException("Użytkownik istnieje");
+        if (userExist) {
+            return "Login jest już zajęty, wybierz inny login";
+        }
+        int nextId = users.size() + 1;
+        person.setId(nextId);
+        users.add(person);
+        return "Dodano użytkownika, możesz się zalogować";
+    }
+
+    public Person findId(Integer id) {
+        users.stream().filter(user -> user.getLogin().equals(id));
+        return new Person();
     }
 
     public void delete(Integer id) {
         users.removeIf(s -> s.getId().equals(id));
         saveUsers();
     }
-
 
     public static List<Person> readUsers() {
         try {

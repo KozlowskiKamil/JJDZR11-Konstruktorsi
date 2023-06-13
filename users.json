@@ -173,12 +173,4 @@
   "secondName" : "a",
   "email" : "a@a",
   "personBooks" : [ ]
-}, {
-  "id" : 16,
-  "login" : "kamil111",
-  "password" : "a",
-  "firstName" : "a",
-  "secondName" : "a",
-  "email" : "a@a",
-  "personBooks" : [ ]
 } ]
