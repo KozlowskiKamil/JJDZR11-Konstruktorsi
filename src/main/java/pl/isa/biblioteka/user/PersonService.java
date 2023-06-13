@@ -41,14 +41,14 @@ public class PersonService {
         return "Dodano użytkownika, możesz się zalogować";
     }
 
-    public PersonDTO findId(Integer id) {
-        Person person = users.stream().filter(user -> user.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Nie ma takiego użytkownika"));
-        return new PersonDTO(person.getId(), person.getLogin(), person.getPassword(), person.getFirstName(), person.getSecondName(), person.getEmail());
-    }
-
-    public void delete(Integer id) {
-        users.removeIf(s -> s.getId().equals(id));
-        saveUsers();
+    public static String editUserId(Person person, Integer id) {
+        boolean userExist = users.stream().anyMatch(user -> user.getLogin().equalsIgnoreCase(person.getLogin()));
+        if (userExist) {
+            return "Login jest już zajęty, wybierz inny login";
+        }
+        person.setId(id);
+        users.add(person);
+        return "Dodano użytkownika, możesz się zalogować";
     }
 
     public static List<Person> readUsers() {
@@ -75,5 +75,15 @@ public class PersonService {
             LOGGER.info("------User not saved error------");
             e.printStackTrace();
         }
+    }
+
+    public PersonDTO findId(Integer id) {
+        Person person = users.stream().filter(user -> user.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Nie ma takiego użytkownika"));
+        return new PersonDTO(person.getId(), person.getLogin(), person.getPassword(), person.getFirstName(), person.getSecondName(), person.getEmail());
+    }
+
+    public void delete(Integer id) {
+        users.removeIf(s -> s.getId().equals(id));
+        saveUsers();
     }
 }
