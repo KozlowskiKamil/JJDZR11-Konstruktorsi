@@ -70,37 +70,51 @@
 <section th:fragment="product" id="product" class="tile2 my-5">
     <div class="container">
         <div class="section-title">
-            <h2>Jakiś content</h2>
-            <p>Opis contentu</p>
+            <h2>AKTUALNOŚCI</h2>
+            <p>Nowości z świata książek</p>
+
         </div>
-        <div class="row pb-5 mb-5">
-            <div class="col-lg-6 pb-5 mb-5">
-                <div class="d-inline-block"><img class="d-inline-block img-fluid pe-5" src="/images/tree.jpg"
-                                                 width="700"></div>
+
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
             </div>
-            <div class="col-lg-6">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore
-                </p>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="https://wbpg.org.pl/wielki-maraton-czytelniczy/"><img
+                            src="/images/wydarzenieCzytelnicze.png"
+                            class="d-block w-100" width="700" height="550"
+                            alt="Wydarzenie czytelnicze"></a>
+                </div>
+                <div class="carousel-item">
+                    <a th:href="@{/librarianDay}"><img src="/images/dzienBibliotekarza2.jpg"
+                                                       class="d-block w-100" width="500" height="550"
+                                                       alt="Dzien bibliotekarza"></a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://www.empik.com/zapowiedzi/ksiazki"><img src="/images/ksiazkoweNowosci.jpg"
+                                                                            class="d-block w-100" width="500"
+                                                                            height="550"
+                                                                            alt="Zapowiedzi wydawnicze"></a>
+                </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
+    </div>
     </div>
 </section>
 
@@ -120,7 +134,7 @@
             <div class="col-lg-3 col-md-6 d-flex">
                 <div class="member">
                     <div class="member-img">
-                        <a href="https://www.linkedin.com" target="_blank"><img src="/images/kinga.jpg"
+                        <a href="https://www.linkedin.com" target="_blank"><img src="/images/kinga.png"
                                                                                 class="img-fluid"
                                                                                 alt="Kinga"></a>
                     </div>
@@ -133,7 +147,7 @@
             <div class="col-lg-3 col-md-6 d-flex">
                 <div class="member">
                     <div class="member-img">
-                        <a href="https://www.linkedin.com" target="_blank"><img src="/images/mikołaj.jpg"
+                        <a href="https://www.linkedin.com" target="_blank"><img src="/images/mikolaj.jpeg"
                                                                                 class="img-fluid"
                                                                                 alt="Mikołaj"></a>
                     </div>
@@ -146,7 +160,7 @@
             <div class="col-lg-3 col-md-6 d-flex">
                 <div class="member">
                     <div class="member-img">
-                        <a href="https://www.linkedin.com" target="_blank"><img src="/images/przemek.jpg"
+                        <a href="https://www.linkedin.com" target="_blank"><img src="/images/przemek.jpeg"
                                                                                 class="img-fluid"
                                                                                 alt="Przemek"></a>
                     </div>
@@ -159,7 +173,7 @@
             <div class="col-lg-3 col-md-6 d-flex">
                 <div class="member">
                     <div class="member-img">
-                        <a href="https://www.linkedin.com" target="_blank"><img src="/images/kamil.jpg"
+                        <a href="https://www.linkedin.com" target="_blank"><img src="/images/kamil.png"
                                                                                 class="img-fluid"
                                                                                 alt="Kamil"></a>
                     </div>

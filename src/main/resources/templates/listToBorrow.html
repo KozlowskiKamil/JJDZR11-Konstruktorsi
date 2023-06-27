@@ -11,9 +11,9 @@
             <div class="row">
                 <div class="cntentTemplate">
                     <div style="display: flex; justify-content: center; margin-top: -50px">
-                        <img class="d-flex" src="/images/baseBooks.png">
+                        <img class="d-flex" src="/images/borrow.png">
                     </div>
-                    <h3 style="color: #5e5e5e; text-align: center; font-weight: bold">Lista książek w bibliotece</h3><br>
+                    <h3 style="color: #5e5e5e; text-align: center; font-weight: bold">Wypożycz książkę</h3><br>
                     <section class="" th:if="${books.isEmpty()}">
                         <h3> Brak wyszukiwanego elementu</h3>
                     </section>
@@ -25,9 +25,10 @@
                             <tr>
                                 <th scope="col">Nr</th>
                                 <th scope="col">Tytuł</th>
-                                <th scope="col">Autor</th>
+                                <th scope="col">Autro</th>
                                 <th scope="col">Kategoria</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Akcja</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -37,6 +38,9 @@
                                 <td th:text="|*{author}|"></td>
                                 <td th:text="|*{category} |"></td>
                                 <td th:text="*{state}? 'Dostępna' : 'Niedostępna'"></td>
+                                <td th:if="*{state != false}">
+                                    <a th:href="@{/myBookBorrowByName(name=${book.title})}" class="btn btn-success btn-sm ms-2">Wypożycz</a>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -44,16 +48,16 @@
                     <div class="text-center">
                         <ul>
                             <li th:if="${firstPage}" class="pagination">
-                                <a th:href="@{/bookList?size=15&amp;page=1}" th:text="${1}">First</a>
+                                <a th:href="@{/borrowBooksList?size=15&amp;page=1}" th:text="${1}">First</a>
                             </li>
                             <li th:if="${books.totalPages > 0}" class="pagination"
                                 th:each="pageNumber : ${pageNumbers}">
-                                <a th:href="@{/bookList(size=${books.size}, page=${pageNumber})}"
+                                <a th:href="@{/borrowBooksList(size=${books.size}, page=${pageNumber})}"
                                    th:text=${pageNumber}
                                    th:class="${pageNumber==books.number + 1} ? active"></a>
                             </li>
                             <li th:if="${lastPage}" class="pagination">
-                                <a th:href="@{/bookList?size=15&amp;page={page}(page=${books.totalPages})}"
+                                <a th:href="@{/borrowBooksList?size=15&amp;page={page}(page=${books.totalPages})}"
                                    th:text="${books.totalPages}">Last</a>
                             </li>
                         </ul>

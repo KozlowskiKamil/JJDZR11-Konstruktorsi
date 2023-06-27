@@ -10,19 +10,9 @@
 
 <header th:replace="~{/fragments/header::logout}" sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"></header>
 
-<div th:if="${user}">
-    <section th:replace="~{fragments/startSection::start}"></section>
-</div>
+<section th:replace="~{fragments/startSection::addBook}"></section>
 
-<div th:if="${user == null}">
-    <section th:replace="~{fragments/startSection::logoff}"></section>
-</div>
-
-<main th:replace="~{/fragments/main::main}" sec:authorize="!hasRole('ROLE_ADMIN')"></main>
-
-<footer th:replace="~{/fragments/footer::footerFull}" sec:authorize="!hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"></footer>
-
-<footer th:replace="~{/fragments/footer::footerHalf}" sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"></footer>
+<footer th:replace="~{/fragments/footer::footerHalf}"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"

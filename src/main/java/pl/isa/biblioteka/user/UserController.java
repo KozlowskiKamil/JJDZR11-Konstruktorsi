@@ -1,8 +1,11 @@
 package pl.isa.biblioteka.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import pl.isa.biblioteka.book.BookService;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -13,13 +16,15 @@ import java.util.List;
 import static pl.isa.biblioteka.user.PersonService.editUserId;
 import static pl.isa.biblioteka.user.PersonService.registerUserId;
 
+
 @Controller
 public class UserController {
 
+    private final BookService bookService;
     private final PersonService personService;
 
-    @Autowired
-    public UserController(PersonService personService) {
+    public UserController(BookService bookService, PersonService personService) {
+        this.bookService = bookService;
         this.personService = personService;
     }
 
@@ -34,6 +39,7 @@ public class UserController {
         List<Person> users = PersonService.readUsers();
         Collections.sort(users, Comparator.comparing(Person::getId));
         model.addAttribute("users", users);
+        personService.readUsers();
         if (principal != null) {
             String user = principal.getName();
             model.addAttribute("user", user);
@@ -67,10 +73,14 @@ public class UserController {
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") Integer id, Model model) {
+    public String edit(Principal principal, @PathVariable("id") Integer id, Model model) {
         PersonDTO personDTO = personService.findId(id);
         model.addAttribute("personDTO", personDTO);
-        return "edit";
+        if (principal != null) {
+            String user = principal.getName();
+            model.addAttribute("user", user);
+            return "edit";
+        } else return "edit";
     }
 
     @PostMapping("/edit/{id}")

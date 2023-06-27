@@ -1,7 +1,5 @@
 package pl.isa.biblioteka.books;
 
-import pl.isa.biblioteka.user.LogUser;
-
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
@@ -24,6 +22,10 @@ public class BorrowBooks {
             }
         }
         return false;
+    }
+
+    private static Predicate<Book> foundBookByTitle(String bookReturnTitle) {
+        return book -> book.getTitle().equalsIgnoreCase(bookReturnTitle);
     }
 
     public static boolean returnBook(String bookTitleToReturn) {
@@ -71,10 +73,6 @@ public class BorrowBooks {
         } else {
             System.out.println("Brak kategorii " + searchCategory + ". Wybierz odpowiednią kategorię z listy");
         }
-    }
-
-    private static Predicate<Book> foundBookByTitle(String bookReturnTitle) {
-        return book -> book.getTitle().equalsIgnoreCase(bookReturnTitle);
     }
 
     public static void sortByAuthor() {

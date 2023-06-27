@@ -14,7 +14,7 @@
                         <img class="d-flex" src="/images/userList.png">
                     </div>
                     <h3 style="color: #5e5e5e; text-align: center; font-weight: bold">Lista użytkowników</h3><br>
-                    <section>
+                    <section style="width: max-content; margin-left: -60px" class="border border-primary rounded-4 bg-light p-2 shadow-lg mb-5 bg-white">
                         <table id="table" class="table table-striped table-hover">
                             <thead>
                             <tr>
@@ -61,7 +61,7 @@
     </section>
 </main>
 
-<footer th:replace="~{/fragments/footer::footer}"></footer>
+<footer th:replace="~{/fragments/footer::footerHalf}"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
@@ -71,46 +71,3 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-<!--<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>User List</title>
-</head>
-<body>
-<h1>User List</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Login</th>
-        <th>Password</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Person Books</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="user : ${users}">
-        <td th:text="${user.login}"></td>
-        <td th:text="${user.password}"></td>
-        <td th:text="${user.firstName}"></td>
-        <td th:text="${user.secondName}"></td>
-        <td th:text="${user.email}"></td>
-        <td>
-            <ul>
-                <li th:each="book : ${user.personBooks}">
-                    <span th:text="${book.title}"></span> -
-                    <span th:text="${book.author}"></span> -
-                    <span th:text="${book.category}"></span> -
-                    <span th:text="${book.state}"></span>
-                </li>
-            </ul>
-        </td>
-    </tr>
-    </tbody>
-</table>
-</body>
-</html>-->
