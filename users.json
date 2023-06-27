@@ -4,7 +4,7 @@
   "password" : "0000",
   "firstName" : "root",
   "secondName" : "admin",
-  "email" : "kamil@kamil.pl",
+  "email" : "kamil1@kamil.pl",
   "personBooks" : [ ]
 }, {
   "id" : 2,
@@ -12,17 +12,31 @@
   "password" : "kamil",
   "firstName" : "Jan",
   "secondName" : "Kowalski",
-  "email" : "kamil@kamil.pl",
+  "email" : "kamil2@kamil.pl",
   "personBooks" : [ {
+    "id" : null,
     "title" : "Życie snem",
     "author" : "Pedro Calderon de la Barca",
     "state" : false,
     "kind" : "Dramat"
   }, {
-    "title" : "Nowa",
-    "author" : "Panke",
+    "id" : null,
+    "title" : "A kiedy będziesz...",
+    "author" : "Kazimierz Przerwa-Tetmajer",
     "state" : false,
-    "kind" : "Horror"
+    "kind" : "Romans"
+  }, {
+    "id" : null,
+    "title" : "Pieśń I, 30 (O Venus regina Cnidi Paphique...)",
+    "author" : "Horacy",
+    "state" : false,
+    "kind" : "Romans"
+  }, {
+    "id" : null,
+    "title" : "Adaś",
+    "author" : "Stanisław Jachowicz",
+    "state" : false,
+    "kind" : "Klasyka"
   } ]
 }, {
   "id" : 3,
@@ -30,22 +44,13 @@
   "password" : "mikolaj",
   "firstName" : "Mikołas",
   "secondName" : "Nowak",
-  "email" : "kamil@kamil.pl",
+  "email" : "kamil3@kamil.pl",
   "personBooks" : [ {
+    "id" : null,
     "title" : "Żydek",
     "author" : "Stanisław Jachowicz",
     "state" : false,
     "kind" : "Epika"
-  }, {
-    "title" : "Życie",
-    "author" : "Karol Bołoz Antoniewicz",
-    "state" : false,
-    "kind" : "Liryka"
-  }, {
-    "title" : "Życie",
-    "author" : "Kazimierz Przerwa-Tetmajer",
-    "state" : false,
-    "kind" : "Liryka"
   } ]
 }, {
   "id" : 4,
@@ -53,7 +58,7 @@
   "password" : "kinga",
   "firstName" : "Kinga",
   "secondName" : "Mila",
-  "email" : "kamil@kamil.pl",
+  "email" : "kamil4@kamil.pl",
   "personBooks" : [ ]
 }, {
   "id" : 5,
@@ -61,8 +66,9 @@
   "password" : "przemek",
   "firstName" : "Przemek",
   "secondName" : "Adamski",
-  "email" : "kamil@kamil.pl",
+  "email" : "kamil5@kamil.pl",
   "personBooks" : [ {
+    "id" : null,
     "title" : "Ostatni list",
     "author" : "Szmul Zygielbojm",
     "state" : false,
@@ -74,15 +80,21 @@
   "password" : "admin",
   "firstName" : "Admin",
   "secondName" : "Root",
-  "email" : "kamil@kamil.pl",
-  "personBooks" : [ ]
+  "email" : "kamil6@kamil.pl",
+  "personBooks" : [ {
+    "id" : null,
+    "title" : "A co wam śpiewać",
+    "author" : "Maria Konopnicka",
+    "state" : false,
+    "kind" : "Romans"
+  } ]
 }, {
   "id" : 7,
   "login" : "login",
   "password" : "pass",
   "firstName" : "first",
   "secondName" : "second",
-  "email" : "kamil@kamil.pl",
+  "email" : "kamil7@kamil.pl",
   "personBooks" : [ ]
 }, {
   "id" : 8,
@@ -90,7 +102,7 @@
   "password" : "pass",
   "firstName" : "Kamil",
   "secondName" : "K",
-  "email" : "kamil@kamil.pl",
+  "email" : "kamil8@kamil.pl",
   "personBooks" : [ ]
 }, {
   "id" : 9,
@@ -98,7 +110,7 @@
   "password" : "pass",
   "firstName" : "Kuba",
   "secondName" : "Knapik",
-  "email" : "kamil@kamil.pl",
+  "email" : "kamil9@kamil.pl",
   "personBooks" : [ ]
 }, {
   "id" : 10,
@@ -106,7 +118,7 @@
   "password" : "pass",
   "firstName" : "karol",
   "secondName" : "wojtyła",
-  "email" : "kamil@kamil.pl",
+  "email" : "kamil10@kamil.pl",
   "personBooks" : [ ]
 }, {
   "id" : 11,
@@ -114,7 +126,7 @@
   "password" : "pass",
   "firstName" : "adam",
   "secondName" : "słodowy",
-  "email" : "kamil@kamil.pl",
+  "email" : "kamil11@kamil.pl",
   "personBooks" : [ ]
 }, {
   "id" : 12,
@@ -122,18 +134,21 @@
   "password" : "1234",
   "firstName" : "kamil",
   "secondName" : "kozlowski",
-  "email" : "kamil@kamil.pl",
+  "email" : "kamil12@kamil.pl",
   "personBooks" : [ {
+    "id" : null,
     "title" : "Zwierzenia Janki",
     "author" : "Maria Konopnicka",
     "state" : false,
     "kind" : "Liryka"
   }, {
+    "id" : null,
     "title" : "Z legend dawnego Egiptu",
     "author" : "Bolesław Prus",
     "state" : false,
     "kind" : "Epika"
   }, {
+    "id" : null,
     "title" : "Oko za oko",
     "author" : "Stefan Żeromski",
     "state" : false,
@@ -145,17 +160,25 @@
   "password" : "test",
   "firstName" : "test",
   "secondName" : "test",
-  "email" : "kamil@kamil.pl",
+  "email" : "kamil13@kamil.pl",
   "personBooks" : [ {
-    "title" : "Wiatr halny",
-    "author" : "Jan Kasprowicz",
+    "id" : null,
+    "title" : "20 000 mil podmorskiej żeglugi",
+    "author" : "Jules Gabriel Verne",
     "state" : false,
-    "kind" : "Liryka"
+    "kind" : "Klasyka"
   }, {
-    "title" : "Na szczycie",
-    "author" : "Kazimierz Przerwa-Tetmajer",
+    "id" : null,
+    "title" : "(Ach! rzucić sieci zdarte...)",
+    "author" : "Tristan Derème",
     "state" : false,
-    "kind" : "Liryka"
+    "kind" : "Romans"
+  }, {
+    "id" : null,
+    "title" : "Abuzei i Tair",
+    "author" : "Ignacy Krasicki",
+    "state" : false,
+    "kind" : "Klasyka"
   } ]
 }, {
   "id" : 14,
@@ -163,31 +186,7 @@
   "password" : "1234",
   "firstName" : "Kamil",
   "secondName" : "Kozłowski",
-  "email" : "kamil@kamil.pl",
-  "personBooks" : [ ]
-}, {
-  "id" : 16,
-  "login" : "b",
-  "password" : "b",
-  "firstName" : "b",
-  "secondName" : "b",
-  "email" : "b@b",
-  "personBooks" : [ ]
-}, {
-  "id" : 17,
-  "login" : "c",
-  "password" : "c",
-  "firstName" : "c",
-  "secondName" : "c",
-  "email" : "c@c",
-  "personBooks" : [ ]
-}, {
-  "id" : 18,
-  "login" : "d",
-  "password" : "d",
-  "firstName" : "d",
-  "secondName" : "d",
-  "email" : "d@d",
+  "email" : "kamil14@kamil.pl",
   "personBooks" : [ ]
 }, {
   "id" : 15,

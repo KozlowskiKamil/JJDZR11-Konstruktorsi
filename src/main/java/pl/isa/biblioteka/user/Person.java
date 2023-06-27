@@ -1,5 +1,6 @@
 package pl.isa.biblioteka.user;
 
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 import pl.isa.biblioteka.book.Book;
 
@@ -7,15 +8,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Entity
 public class Person {
-    private Integer id;
-    private String login;
-    private String password;
-    private String firstName;
-    private String secondName;
-    private String email;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "person_id")
     public List<Book> personBooks = new ArrayList<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = "login", unique = true, nullable = false)
+    private String login;
+    @Column(name = "password", nullable = false)
+    private String password;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "second_name")
+    private String secondName;
+
+    //OneToMeny
+//    @Transient
+    @Column(name = "email", unique = true, nullable = false)
+    private String email;
 
     public Person(String login, String password, String firstName, String secondName, String email) {
         this.login = login;
@@ -110,13 +124,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", personBooks=" + personBooks +
-                '}';
+        return "Person{" + "id=" + id + ", login='" + login + '\'' + ", password='" + password + '\'' + ", firstName='" + firstName + '\'' + ", secondName='" + secondName + '\'' + ", personBooks=" + personBooks + '}';
     }
 }

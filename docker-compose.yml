@@ -4,14 +4,21 @@ services:
     image: mysql:latest
     restart: always
     ports:
-      - 3306:3306
+      - 3308:3306
     environment:
-      MYSQL_ROOT_PASSWORD: kamil
-    volumes:
-      - ./mysql:/var/lib/mysql
+      MYSQL_ROOT_PASSWORD: book
+      MYSQL_DATABASE: library
   JJDZR11-Konstruktorsi:
-    image: library
+    image: library:0.1
     depends_on:
       - mysql
     ports:
       - 8080:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/library
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: book
+      SPRING_DATASOURCE_DRIVER-CLASS-NAME: com.mysql.cj.jdbc.Driver
+      SPRING_JPA_HIBERNATE_DDL-AUTO: create
+      SPRING_JPA_SHOW-SQL: "true"
+      SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"

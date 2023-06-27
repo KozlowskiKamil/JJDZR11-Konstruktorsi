@@ -1,6 +1,5 @@
 package pl.isa.biblioteka.menu;
 
-import pl.isa.biblioteka.user.LogUser;
 import pl.isa.biblioteka.user.Person;
 
 import java.util.Scanner;

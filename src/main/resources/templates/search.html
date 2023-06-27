@@ -17,12 +17,8 @@
                         <img class="d-flex" src="/images/search.png">
                     </div>
                     <h3 style="color: #5e5e5e; text-align: center; font-weight: bold">Wyszukiwanie zaawansowane</h3><br>
-                    <a class="btn btn-info me-2 mb-2" th:href="@{/bookList}">Lista książek</a>
                     <div style="width: auto; justify-content: center;"
                          class="border border-primary rounded-4 bg-light p-4 shadow-lg p-3 mb-5 bg-white rounded">
-
-
-
                         <form th:action="@{/searchByText}" method="post" class="d-flex my-2 mb-5">
                             <input class="form-control form-control-primary" type="text" name="text"
                                    placeholder="Wyszukaj dowolną frazę w bibliotece...">
@@ -58,7 +54,7 @@
     </section>
 </main>
 
-<footer th:replace="~{/fragments/footer::footer}"></footer>
+<footer th:replace="~{/fragments/footer::footerHalf}"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"

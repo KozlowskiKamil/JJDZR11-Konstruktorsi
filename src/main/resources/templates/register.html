@@ -10,9 +10,11 @@
 
 <header th:replace="~{/fragments/header::logout}" sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"></header>
 
-<section th:replace="~{fragments/startSection::register}"></section>
+<section th:replace="~{fragments/startSection::addUser}" sec:authorize="hasRole('ROLE_ADMIN')"></section>
 
-<footer th:replace="~{/fragments/footer::footer}"></footer>
+<section th:replace="~{fragments/startSection::register}" sec:authorize="!hasRole('ROLE_ADMIN')"></section>
+
+<footer th:replace="~{/fragments/footer::footerHalf}"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"

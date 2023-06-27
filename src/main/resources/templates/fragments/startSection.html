@@ -9,19 +9,19 @@
         <div class="row tiles">
             <div class="col-md-6 col-lg-3 d-flex mb-5 mb-lg-0 d-flex justify-content-center">
                 <div class="tile1">
-                    <h4 class="title"><a href=""><img class="img-fluid" src="/images/add.png"></a></h4>
+                    <h4 class="title"><a th:href="@{/addBook}"><img class="img-fluid" src="/images/add.png"></a></h4>
                     <p class="description text-center">Dodaj książkę</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 d-flex mb-5 mb-lg-0 d-flex justify-content-center">
                 <div class="tile1">
-                    <h4 class="title"><a href=""><img class="img-fluid" src="/images/borrow.png"></a></h4>
+                    <h4 class="title"><a th:href="@{/borrowBooksList}"><img class="img-fluid" src="/images/borrow.png"></a></h4>
                     <p class="description text-center">Wypożycz książkę</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 d-flex mb-5 mb-lg-0 d-flex justify-content-center">
                 <div class="tile1">
-                    <h4 class="title"><a href=""><img class="img-fluid" src="/images/returnBook.png"></a></h4>
+                    <h4 class="title"><a th:href="@{/myBooksReturn}"><img class="img-fluid" src="/images/returnBook.png"></a></h4>
                     <p class="description text-center">Zwróć książkę</p>
                 </div>
             </div>
@@ -37,7 +37,7 @@
 
             <div class="col-md-6 col-lg-3 d-flex mb-5 mb-lg-0 d-flex justify-content-center">
                 <div class="tile1">
-                    <h4 class="title"><a href=""><img class="img-fluid" src="/images/adduser.png"></a></h4>
+                    <h4 class="title"><a th:href="@{/register}"><img class="img-fluid" src="/images/adduser.png"></a></h4>
                     <p class="description text-center">Dodaj użytkownika</p>
                 </div>
             </div>
@@ -51,14 +51,14 @@
 
             <div class="col-md-6 col-lg-3 d-flex mb-5 mb-lg-0 d-flex justify-content-center">
                 <div class="tile1">
-                    <h4 class="title"><a href=""><img class="img-fluid" src="/images/borrowList.png"></a></h4>
+                    <h4 class="title"><a th:href="@{/borrowedBooks}"><img class="img-fluid" src="/images/borrowList.png"></a></h4>
                     <p class="description text-center">Lista wypożyczonych książek</p>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-3 d-flex mb-5 mb-lg-0 d-flex justify-content-center">
                 <div class="tile1">
-                    <h4 class="title"><a th:href="@{/bookList}"><img class="img-fluid" src="/images/availableList.png"></a>
+                    <h4 class="title"><a th:href="@{/availableBooks}"><img class="img-fluid" src="/images/availableList.png"></a>
                     </h4>
                     <p class="description text-center">Zobacz dostępne książki</p>
                 </div>
@@ -66,7 +66,6 @@
         </div>
     </div>
 </section>
-
 <!--
 * user
 -->
@@ -93,13 +92,13 @@
             </div>
             <div class="col-md-6 col-lg-3 d-flex mb-5 mb-lg-0 d-flex justify-content-center">
                 <div class="tile1">
-                    <h4 class="title"><a href=""><img class="img-fluid" src="/images/borrow.png"></a></h4>
+                    <h4 class="title"><a th:href="@{/borrowBooksList}"><img class="img-fluid" src="/images/borrow.png"></a></h4>
                     <p class="description text-center">Wypożycz książkę</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 d-flex mb-5 mb-lg-0 d-flex justify-content-center">
                 <div class="tile1">
-                    <h4 class="title"><a href=""><img class="img-fluid" src="/images/returnBook.png"></a></h4>
+                    <h4 class="title"><a th:href="@{/myBooksReturn}"><img class="img-fluid" src="/images/returnBook.png"></a></h4>
                     <p class="description text-center">Zwróć książkę</p>
                 </div>
             </div>
@@ -174,7 +173,7 @@
             </div>
         </div>
         <div class="row tiles mt-2 ">
-            <form action="/register" method="post" style="width: fit-content"
+            <form action="/register" method="post" style="width: 400px"
                   class="border border-primary rounded-4 bg-light p-4 shadow-lg p-3 mb-5 bg-white rounded">
                 <div class="mb-3">
                     <label for="login" class="form-label text-primary">Login</label>
@@ -203,6 +202,99 @@
                     <div id="emailHelp" class="form-text">Nigdy nie udostępnimy twojego adresu e-mail.</div>
                 </div>
                 <button type="submit" class="btn btn-primary mb-1">Utwórz konto</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<!--
+* start addBook
+-->
+
+<section th:fragment="addBook" id="start" class="d-flex align-items-center">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="cntentTemplate text-center col-xl-7 col-lg-9">
+                <div style="display: flex; justify-content: center; margin-top: -50px">
+                    <img class="d-flex" src="/images/add.png">
+                </div>
+                <h3 style="color: #5e5e5e; text-align: center; font-weight: bold">Dodaj książkę</h3><br>
+                <div th:if="${mesage}" class="alert alert-secondary" role="alert">
+                    <span th:text="${mesage}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row tiles mt-2 ">
+            <form action="/addBook" method="post" style="width: 400px"
+                  class="border border-primary rounded-4 bg-light p-4 shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="mb-3">
+                    <label for="title" class="form-label text-primary">Tytuł</label>
+                    <input type="text" class="form-control form-control-primary" id="title" placeholder="Tytuł"
+                           name="title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label text-primary">Autor</label>
+                    <input type="text" class="form-control" id="author" placeholder="Autor" name="author"
+                           required>
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="form-label text-primary">Kategoria</label>
+                    <input type="text" class="form-control form-control-primary" id="category"
+                           placeholder="Kategoria" name="category" required>
+                </div>
+                <button type="submit" class="btn btn-primary mb-1">Dodaj książkę</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!--
+* start addUser
+-->
+
+<section th:fragment="addUser" id="start" class="d-flex align-items-center">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="cntentTemplate text-center col-xl-7 col-lg-9">
+                <div style="display: flex; justify-content: center; margin-top: -50px">
+                    <img class="d-flex" src="/images/adduser.png">
+                </div>
+                <h3 style="color: #5e5e5e; text-align: center; font-weight: bold">Dodaj użytkownika</h3><br>
+                <div th:if="${mesage}" class="alert alert-secondary" role="alert">
+                    <span th:text="${mesage}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row tiles mt-2">
+            <form action="/register" method="post" style="width: 400px"
+                  class="border border-primary rounded-4 bg-light p-4 shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="mb-3">
+                    <label for="login" class="form-label text-primary">Login</label>
+                    <input type="text" class="form-control form-control-primary" id="login" placeholder="login"
+                           name="login" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label text-primary">Hasło</label>
+                    <input type="password" class="form-control" id="password" placeholder="hasło" name="password"
+                           required>
+                </div>
+                <div class="mb-3">
+                    <label for="firstName" class="form-label text-primary">Imię</label>
+                    <input type="text" class="form-control form-control-primary" id="firstName"
+                           placeholder="imię" name="firstName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="secondName" class="form-label text-primary">Nazwisko</label>
+                    <input type="text" class="form-control form-control-primary" id="secondName"
+                           placeholder="nazwisko" name="secondName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label text-primary">Addres email</label>
+                    <input type="email" class="form-control form-control-primary" id="email"
+                           placeholder="email" name="email" required>
+                </div>
+                <button type="submit" class="btn btn-primary mb-1">Dodaj użytkownika</button>
             </form>
         </div>
     </div>

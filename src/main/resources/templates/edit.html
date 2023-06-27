@@ -12,10 +12,12 @@
 
 <section id="start" class="d-flex align-items-center">
     <div class="container position-relative">
-        <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-9 text-center">
-                <h1 class="library">BIBLIOTEKA</h1>
-                <h3 class="library" style="font-weight: bold">Edytuj konto</h3>
+        <div class="row">
+            <div class="cntentTemplate">
+                <div style="display: flex; justify-content: center; margin-top: -50px">
+                    <img class="d-flex" src="/images/adduser.png">
+                </div>
+                <h3 style="color: #5e5e5e; text-align: center; font-weight: bold">Edytuj użytkownika</h3><br>
                 <div th:if="${mesage}" class="alert alert-secondary" role="alert">
                     <span th:text="${mesage}"></span>
                 </div>
@@ -48,9 +50,8 @@
                     <label for="email" class="form-label text-primary">Addres email</label>
                     <input th:field="*{email}" type="email" class="form-control form-control-primary" id="email"
                            placeholder="email" name="email" required>
-                    <div id="emailHelp" class="form-text">Nigdy nie udostępnimy twojego adresu e-mail.</div>
                 </div>
-                <button type="submit" class="btn btn-primary mb-1">Edytuj konto</button>
+                <button type="submit" class="btn btn-primary mb-1">Edytuj użytkownika</button>
             </form>
         </div>
     </div>
@@ -59,7 +60,7 @@
 
 
 
-<footer th:replace="~{/fragments/footer::footer}"></footer>
+<footer th:replace="~{/fragments/footer::footerHalf}"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"

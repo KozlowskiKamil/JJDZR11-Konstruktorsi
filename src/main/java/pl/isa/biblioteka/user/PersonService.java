@@ -2,6 +2,9 @@ package pl.isa.biblioteka.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import pl.isa.biblioteka.book.Book;
 
@@ -15,19 +18,47 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @Service
 public class PersonService {
-
     private static final Logger LOGGER = Logger.getLogger(PersonService.class.getName());
-
 
     public static List<Person> users = new ArrayList<>(PersonService.readUsers());
 
+
+    public static List<Book> personBooks = new ArrayList<>();
     public final List<Person> personList;
-    public List<Book> personBooks = new ArrayList<>();
 
     public PersonService(List<Person> personList) {
         this.personList = personList;
+    }
+
+    public void setPersonBooks(List<Book> personBooks) {
+        this.personBooks = personBooks;
+    }
+
+    public List<Book> getPersonBooks() {
+        return personBooks;
+    }
+
+
+    public static Person currentLogUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof UserDetails) {
+                UserDetails userDetails = (UserDetails) principal;
+                String username = userDetails.getUsername();
+                for (Person user : users) {
+                    if (user.getLogin().equalsIgnoreCase(username)) {
+                        personBooks = user.getPersonBooks();
+                        return user;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     public static String registerUserId(Person person) {
@@ -38,7 +69,8 @@ public class PersonService {
         int nextId = users.size() + 1;
         person.setId(nextId);
         users.add(person);
-        return "Dodano użytkownika, możesz się zalogować";
+        LOGGER.info("Dodano użytkownika: " + person.getLogin());
+        return "Dodano użytkownika: " + person.getLogin() + ", możesz się zalogować";
     }
 
     public static String editUserId(Person person, Integer id) {
