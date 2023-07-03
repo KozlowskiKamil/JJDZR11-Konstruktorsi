@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import pl.isa.biblioteka.book.Book;
+import pl.isa.biblioteka.model.User;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,21 +19,20 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
-
 @Service
 public class PersonService {
+
+    private final PersonDAO personDAO;
+
+    public PersonService(PersonDAO personDAO) {
+        this.personDAO = personDAO;
+    }
+
     private static final Logger LOGGER = Logger.getLogger(PersonService.class.getName());
 
-    public static List<Person> users = new ArrayList<>(PersonService.readUsers());
-
+    public static List<User> users = new ArrayList<>(PersonService.readUsers());
 
     public static List<Book> personBooks = new ArrayList<>();
-    public final List<Person> personList;
-
-    public PersonService(List<Person> personList) {
-        this.personList = personList;
-    }
 
     public void setPersonBooks(List<Book> personBooks) {
         this.personBooks = personBooks;
@@ -42,16 +42,15 @@ public class PersonService {
         return personBooks;
     }
 
-
-    public static Person currentLogUser() {
+    public static User currentLogUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
             Object principal = authentication.getPrincipal();
             if (principal instanceof UserDetails) {
                 UserDetails userDetails = (UserDetails) principal;
                 String username = userDetails.getUsername();
-                for (Person user : users) {
-                    if (user.getLogin().equalsIgnoreCase(username)) {
+                for (User user : users) {
+                    if (user.getUsername().equalsIgnoreCase(username)) {
                         personBooks = user.getPersonBooks();
                         return user;
                     }
@@ -61,34 +60,36 @@ public class PersonService {
         return null;
     }
 
-    public static String registerUserId(Person person) {
-        boolean userExist = users.stream().anyMatch(user -> user.getLogin().equalsIgnoreCase(person.getLogin()));
+    public String registerUserId(User user) {
+        boolean userExist = personDAO.isLoginTaken(user.getUsername());
         if (userExist) {
             return "Login jest już zajęty, wybierz inny login";
         }
-        int nextId = users.size() + 1;
-        person.setId(nextId);
-        users.add(person);
-        LOGGER.info("Dodano użytkownika: " + person.getLogin());
-        return "Dodano użytkownika: " + person.getLogin() + ", możesz się zalogować";
-    }
 
-    public static String editUserId(Person person, Integer id) {
-        boolean userExist = users.stream().anyMatch(user -> user.getLogin().equalsIgnoreCase(person.getLogin()));
-        if (userExist) {
-            return "Login jest już zajęty, wybierz inny login";
+        User savedUser = personDAO.savePerson(user);
+        if (savedUser != null) {
+            return "Dodano użytkownika: " + savedUser.getUsername() + ", możesz się zalogować";
+        } else {
+            return "Wystąpił problem podczas rejestracji użytkownika";
         }
-        person.setId(id);
-        users.add(person);
-        return "Dodano użytkownika, możesz się zalogować";
     }
 
-    public static List<Person> readUsers() {
+    public String editUserId(User user, Integer id) {
+        boolean userExist = personDAO.isLoginTaken(user.getUsername());
+        if (userExist) {
+            return "Użytkownik edytowany";
+        }
+        user.setId(id);
+        personDAO.savePerson(user);
+        return "Nie ma takiego użytkownika";
+    }
+
+    public static List<User> readUsers() {
         try {
             byte[] jsonData = Files.readAllBytes(Paths.get("users.json"));
             ObjectMapper folderPerson = new ObjectMapper();
             LOGGER.info("------User read correctly------");
-            return Arrays.asList(folderPerson.readValue(jsonData, Person[].class));
+            return Arrays.asList(folderPerson.readValue(jsonData, User[].class));
         } catch (IOException e) {
             e.printStackTrace();
             LOGGER.info("------User not read error------");
@@ -99,9 +100,9 @@ public class PersonService {
     public static void saveUsers() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        List<Person> personList = users;
+        List<User> userList = users;
         try {
-            mapper.writeValue(new File("users.json"), personList);
+            mapper.writeValue(new File("users.json"), userList);
             LOGGER.info("------User saved correctly------");
         } catch (IOException e) {
             LOGGER.info("------User not saved error------");
@@ -110,8 +111,8 @@ public class PersonService {
     }
 
     public PersonDTO findId(Integer id) {
-        Person person = users.stream().filter(user -> user.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Nie ma takiego użytkownika"));
-        return new PersonDTO(person.getId(), person.getLogin(), person.getPassword(), person.getFirstName(), person.getSecondName(), person.getEmail());
+        User user = users.stream().filter(user1 -> user1.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Nie ma takiego użytkownika"));
+        return new PersonDTO(user.getId(), user.getUsername(), user.getPassword(), user.getFirstName(), user.getSecondName(), user.getEmail());
     }
 
     public void delete(Integer id) {

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.isa.biblioteka.file.FolderBooks;
-import pl.isa.biblioteka.user.Person;
+import pl.isa.biblioteka.model.User;
 import pl.isa.biblioteka.user.PersonService;
 
 import java.security.Principal;
@@ -41,11 +41,9 @@ public class BookController {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, booksList);
-        if (principal != null) {
-            String user = principal.getName();
-            model.addAttribute("user", user);
+
             return "list";
-        } else return "list";
+
     }
 
     @GetMapping("/search")
@@ -53,11 +51,8 @@ public class BookController {
         model.addAttribute("book", book);
         model.addAttribute("category", bookService.availableCategory());
 
-        if (principal != null) {
-            String user = principal.getName();
-            model.addAttribute("user", user);
             return "search";
-        } else return "search";
+
     }
 
     @PostMapping("/filterAuthor")
@@ -75,11 +70,9 @@ public class BookController {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, bookListByAuthor);
-        if (principal != null) {
-            String user = principal.getName();
-            model.addAttribute("user", user);
+
             return "listToBorrow";
-        } else return "listToBorrow";
+
     }
 
     @PostMapping("/filterTitle")
@@ -96,11 +89,9 @@ public class BookController {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, searchBook);
-        if (principal != null) {
-            String user = principal.getName();
-            model.addAttribute("user", user);
+
             return "listToBorrow";
-        } else return "listToBorrow";
+
     }
 
     @PostMapping("/filterCategory")
@@ -118,11 +109,9 @@ public class BookController {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(15);
         extracted(model, currentPage, pageSize, searchCategoryBook);
-        if (principal != null) {
-            String user = principal.getName();
-            model.addAttribute("user", user);
+
             return "listToBorrow";
-        } else return "listToBorrow";
+
     }
 
     @GetMapping("/searchText")
@@ -133,11 +122,9 @@ public class BookController {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
         extracted(model, currentPage, pageSize, localSearchBook);
-        if (principal != null) {
-            String user = principal.getName();
-            model.addAttribute("user", user);
+
             return "list";
-        } else return "list";
+
     }
 
     @PostMapping("/searchByText")
@@ -153,11 +140,9 @@ public String librarianDay(Model model) {
 
     @GetMapping("/addBook")
     public String addBook(Principal principal, Model model) {
-        if (principal != null) {
-            String user = principal.getName();
-            model.addAttribute("user", user);
+
             return "addBook";
-        } else return "addBook";
+
     }
     @GetMapping("/myBooksReturnByName")
     public String deleteBook(@RequestParam("name") String name) {
@@ -168,13 +153,11 @@ public String librarianDay(Model model) {
 
     @GetMapping("/myBooksReturn")
     public String returnMyBook(Principal principal,Model model){
-        List<Person> users = PersonService.readUsers();
+        List<User> users = PersonService.readUsers();
         model.addAttribute("users", users);
-        if (principal != null) {
-            String user = principal.getName();
-            model.addAttribute("user", user);
+
             return "returnBook";
-        } else return "returnBook";
+    
     }
 
 
@@ -189,11 +172,9 @@ public String librarianDay(Model model) {
         extracted(model, currentPage, pageSize, booksList);
         FolderBooks.saveBooks();
         PersonService.saveUsers();
-        if (principal != null) {
-            String user = principal.getName();
-            model.addAttribute("user", user);
+
             return "listToBorrow";
-        } else return "listToBorrow";
+
     }
 
     @GetMapping("/myBookBorrowByName")
@@ -210,11 +191,9 @@ public String librarianDay(Model model) {
         model.addAttribute("result", book);
         model.addAttribute("mesage", str);
         BookRepository.saveBooks();
-        if (principal != null) {
-            String user = principal.getName();
-            model.addAttribute("user", user);
+
             return "addBook";
-        } else return "addBook";
+ 
     }
     @GetMapping("/availableBooks")
     public String availableBooks (Principal principal, Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
@@ -223,11 +202,9 @@ public String librarianDay(Model model) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
         extracted(model, currentPage, pageSize, availableBooks);
-        if (principal != null) {
-            String user = principal.getName();
-            model.addAttribute("user", user);
+
             return "availableBooks";
-        } else return "availableBooks";
+
 
     }
     @GetMapping("/borrowedBooks")
@@ -236,11 +213,9 @@ public String librarianDay(Model model) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(20);
         extracted(model, currentPage, pageSize, borrowedBooks);
-        if (principal != null) {
-            String user = principal.getName();
-            model.addAttribute("user", user);
+
             return "borrowedBooks";
-        } else return "borrowedBooks";
+
 
     }
 }

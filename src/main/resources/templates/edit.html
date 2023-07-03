@@ -18,7 +18,7 @@
                     <img class="d-flex" src="/images/adduser.png">
                 </div>
                 <h3 style="color: #5e5e5e; text-align: center; font-weight: bold">Edytuj użytkownika</h3><br>
-                <div th:if="${mesage}" class="alert alert-secondary" role="alert">
+                <div style="text-align: center" th:if="${mesage}" class="alert alert-secondary" role="alert">
                     <span th:text="${mesage}"></span>
                 </div>
             </div>
@@ -27,14 +27,15 @@
             <form th:action="@{/edit/{id}(id=*{id})}" method="post" th:object="${personDTO}" style="width: fit-content"
                   class="border border-primary rounded-4 bg-light p-4 shadow-lg p-3 mb-5 bg-white rounded">
                 <div class="mb-3">
-                    <label for="login" class="form-label text-primary">Login</label>
-                    <input th:field="*{login}" type="text" class="form-control form-control-primary" id="login" placeholder="login"
-                           name="login" required>
+                    <label for="username" class="form-label text-primary">Username</label>
+                    <input th:field="*{username}" type="text" class="form-control form-control-primary" id="username"
+                           placeholder="username"
+                           name="username" required>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label text-primary">Hasło</label>
-                    <input th:field="*{password}" type="password" class="form-control" id="password" placeholder="hasło" name="password"
-                           required>
+                    <label for="password" class="form-label text-primary">Wprowadź aby zmienić hasło</label>
+                    <input th:field="*{password}" type="password" class="form-control" id="password"
+                           placeholder="Puste aby zostawić obecne" name="password">
                 </div>
                 <div class="mb-3">
                     <label for="firstName" class="form-label text-primary">Imię</label>
@@ -43,7 +44,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="secondName" class="form-label text-primary">Nazwisko</label>
-                    <input th:field="*{secondName}" type="text" class="form-control form-control-primary" id="secondName"
+                    <input th:field="*{secondName}" type="text" class="form-control form-control-primary"
+                           id="secondName"
                            placeholder="nazwisko" name="secondName" required>
                 </div>
                 <div class="mb-3">
@@ -51,14 +53,19 @@
                     <input th:field="*{email}" type="email" class="form-control form-control-primary" id="email"
                            placeholder="email" name="email" required>
                 </div>
+
+                <div class="mb-3">
+                    <input id="isAdmin" class="form-check-input" type="checkbox" name="isAdmin"
+                           th:checked="${role == 'ROLE_ADMIN'}"/>
+                    <label class="form-label text-primary" for="isAdmin">
+                        Uprawnienia administratora
+                    </label>
+                </div>
                 <button type="submit" class="btn btn-primary mb-1">Edytuj użytkownika</button>
             </form>
         </div>
     </div>
 </section>
-
-
-
 
 <footer th:replace="~{/fragments/footer::footerHalf}"></footer>
 

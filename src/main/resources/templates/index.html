@@ -10,15 +10,15 @@
 
 <header th:replace="~{/fragments/header::logout}" sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"></header>
 
-<div th:if="${user}">
+<div sec:authorize="isAuthenticated()">
     <section th:replace="~{fragments/startSection::start}"></section>
 </div>
 
-<div th:if="${user == null}">
+<div sec:authorize="!isAuthenticated()">
     <section th:replace="~{fragments/startSection::logoff}"></section>
 </div>
 
-<main th:replace="~{/fragments/main::main}" sec:authorize="!hasRole('ROLE_ADMIN')"></main>
+<main th:replace="~{/fragments/main::main}" sec:authorize="!hasRole('ROLE_ADMIN')"></main><!---->
 
 <footer th:replace="~{/fragments/footer::footerFull}" sec:authorize="!hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"></footer>
 
@@ -33,3 +33,25 @@
 </body>
 
 </html>
+
+
+
+
+
+<!--
+<main>
+    <div  sec:authorize="isAuthenticated()" th:align="center">
+        Jestem zalogowany
+        <div>
+            <p>Authenticated username:</p>
+            <div sec:authentication="name">TO JEST NAME ?</div>
+        </div>
+        <div>
+            <p>Authenticated user roles:</p>
+            <div sec:authentication="principal.authorities">TO JEST ROLE ?</div>
+        </div>
+    </div>
+    <div th:align="center" th:object="${username}">
+        <label th:text="'Witaj ' + ${username}"></label>
+    </div>
+</main>-->

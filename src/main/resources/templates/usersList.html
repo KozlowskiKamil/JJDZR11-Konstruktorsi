@@ -19,8 +19,8 @@
                             <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Login</th>
-                                <th scope="col">Hasło</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Rola</th>
                                 <th scope="col">Imię</th>
                                 <th scope="col">Nazwisko</th>
                                 <th scope="col">Email</th>
@@ -31,8 +31,8 @@
                             <tbody>
                             <tr th:each="user : ${users}">
                                 <td th:text="${user.id}"></td>
-                                <td th:text="${user.login}"></td>
-                                <td th:text="${user.password}"></td>
+                                <td th:text="${user.username}"></td>
+                                <td th:text="${user.role}"></td>
                                 <td th:text="${user.firstName}"></td>
                                 <td th:text="${user.secondName}"></td>
                                 <td th:text="${user.email}"></td>

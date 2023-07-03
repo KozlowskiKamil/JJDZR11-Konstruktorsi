@@ -24,7 +24,7 @@
                                 <th scope="col">Zwróć książkę</th>
                             </tr>
                             </thead>
-                            <tbody th:each="currentUser : ${users}" th:if="${currentUser.login} == ${user}">
+                            <tbody th:each="currentUser : ${users}" th:if="${currentUser.username} == ${user}">
                             <tr th:each="book : ${currentUser.personBooks}" th:object="${book}">
                                 <td th:text="*{title}"></td>
                                 <td th:text="*{author}"></td>

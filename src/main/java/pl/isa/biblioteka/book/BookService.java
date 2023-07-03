@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import pl.isa.biblioteka.file.FolderBooks;
-import pl.isa.biblioteka.user.Person;
+import pl.isa.biblioteka.model.User;
 import pl.isa.biblioteka.user.PersonService;
 
 import java.util.*;
@@ -145,11 +145,11 @@ public class BookService {
     }
 
     public boolean addBookToPerson(String bookTitle) {
-        Person person = PersonService.currentLogUser();
+        User user = PersonService.currentLogUser();
         for (Book book : booksList) {
             if (book.getTitle().equalsIgnoreCase(bookTitle) && book.isState()) {
                 book.setState(false);
-                person.getPersonBooks().add(book);
+                user.getPersonBooks().add(book);
 //                PersonService.personBooks.add(book);
                 return true;
             }

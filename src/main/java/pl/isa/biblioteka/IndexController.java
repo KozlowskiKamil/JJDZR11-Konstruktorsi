@@ -1,3 +1,4 @@
+/*
 package pl.isa.biblioteka;
 
 import org.springframework.security.core.Authentication;
@@ -47,6 +48,7 @@ public class IndexController {
 }
 
 
+*/
 /*           Metoda do KONFIGURACJA BEZ ZABEZPIECZENIA authorizeHttpRequests
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
@@ -59,15 +61,18 @@ public class IndexController {
         }
         return "redirect:/";
     }
-*/
+*//*
+
 
 
 // todo skasować przed końcem sprint jak nie będą potrzebne lub przed wgraniem na main
 
-    /*    @GetMapping("/")
+    */
+/*    @GetMapping("/")
     public ModelAndView index(){
         return new ModelAndView("index");
-    }*/
+    }*//*
+
 
 
 //    @GetMapping("/")
@@ -90,3 +95,4 @@ public class IndexController {
 
 
 
+*/
