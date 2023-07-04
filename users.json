@@ -5,61 +5,22 @@
   "password" : "0000",
   "firstName" : "root",
   "secondName" : "admin",
-  "role" : null,
   "email" : "kamil1@kamil.pl"
 }, {
-  "personBooks" : [ {
-    "id" : null,
-    "title" : "Życie snem",
-    "author" : "Pedro Calderon de la Barca",
-    "state" : false,
-    "kind" : "Dramat"
-  }, {
-    "id" : null,
-    "title" : "A kiedy będziesz...",
-    "author" : "Kazimierz Przerwa-Tetmajer",
-    "state" : false,
-    "kind" : "Romans"
-  }, {
-    "id" : null,
-    "title" : "Pieśń I, 30 (O Venus regina Cnidi Paphique...)",
-    "author" : "Horacy",
-    "state" : false,
-    "kind" : "Romans"
-  }, {
-    "id" : null,
-    "title" : "Adaś",
-    "author" : "Stanisław Jachowicz",
-    "state" : false,
-    "kind" : "Klasyka"
-  }, {
-    "id" : null,
-    "title" : "Prometeusz skowany",
-    "author" : "Ajschylos",
-    "state" : false,
-    "kind" : "Tragedia"
-  } ],
+  "personBooks" : [ ],
   "id" : 2,
   "username" : "Kamil",
   "password" : "kamil",
   "firstName" : "Jan",
   "secondName" : "Kowalski",
-  "role" : null,
   "email" : "kamil2@kamil.pl"
 }, {
-  "personBooks" : [ {
-    "id" : null,
-    "title" : "Żydek",
-    "author" : "Stanisław Jachowicz",
-    "state" : false,
-    "kind" : "Epika"
-  } ],
+  "personBooks" : [ ],
   "id" : 3,
   "username" : "Mikolas",
   "password" : "mikolaj",
   "firstName" : "Mikołas",
   "secondName" : "Nowak",
-  "role" : null,
   "email" : "kamil3@kamil.pl"
 }, {
   "personBooks" : [ ],
@@ -68,37 +29,22 @@
   "password" : "kinga",
   "firstName" : "Kinga",
   "secondName" : "Mila",
-  "role" : null,
   "email" : "kamil4@kamil.pl"
 }, {
-  "personBooks" : [ {
-    "id" : null,
-    "title" : "Ostatni list",
-    "author" : "Szmul Zygielbojm",
-    "state" : false,
-    "kind" : "Epika"
-  } ],
+  "personBooks" : [ ],
   "id" : 5,
   "username" : "Przemek",
   "password" : "przemek",
   "firstName" : "Przemek",
   "secondName" : "Adamski",
-  "role" : null,
   "email" : "kamil5@kamil.pl"
 }, {
-  "personBooks" : [ {
-    "id" : null,
-    "title" : "A co wam śpiewać",
-    "author" : "Maria Konopnicka",
-    "state" : false,
-    "kind" : "Romans"
-  } ],
+  "personBooks" : [ ],
   "id" : 6,
   "username" : "Admin",
   "password" : "admin",
   "firstName" : "Admin",
   "secondName" : "Root",
-  "role" : null,
   "email" : "kamil6@kamil.pl"
 }, {
   "personBooks" : [ ],
@@ -107,7 +53,6 @@
   "password" : "pass",
   "firstName" : "first",
   "secondName" : "second",
-  "role" : null,
   "email" : "kamil7@kamil.pl"
 }, {
   "personBooks" : [ ],
@@ -116,7 +61,6 @@
   "password" : "pass",
   "firstName" : "Kamil",
   "secondName" : "K",
-  "role" : null,
   "email" : "kamil8@kamil.pl"
 }, {
   "personBooks" : [ ],
@@ -125,35 +69,47 @@
   "password" : "pass",
   "firstName" : "Kuba",
   "secondName" : "Knapik",
-  "role" : null,
   "email" : "kamil9@kamil.pl"
 }, {
-  "personBooks" : [ {
-    "id" : null,
-    "title" : "Zwierzenia Janki",
-    "author" : "Maria Konopnicka",
-    "state" : false,
-    "kind" : "Liryka"
-  }, {
-    "id" : null,
-    "title" : "Z legend dawnego Egiptu",
-    "author" : "Bolesław Prus",
-    "state" : false,
-    "kind" : "Epika"
-  }, {
-    "id" : null,
-    "title" : "Oko za oko",
-    "author" : "Stefan Żeromski",
-    "state" : false,
-    "kind" : "Epika"
-  } ],
+  "personBooks" : [ ],
+  "id" : 10,
+  "username" : "karol",
+  "password" : "pass",
+  "firstName" : "karol",
+  "secondName" : "wojtyła",
+  "email" : "kamil10@kamil.pl"
+}, {
+  "personBooks" : [ ],
+  "id" : 11,
+  "username" : "adams",
+  "password" : "pass",
+  "firstName" : "adam",
+  "secondName" : "słodowy",
+  "email" : "kamil11@kamil.pl"
+}, {
+  "personBooks" : [ ],
   "id" : 12,
   "username" : "kamil2k3",
   "password" : "1234",
   "firstName" : "kamil",
   "secondName" : "kozlowski",
-  "role" : null,
   "email" : "kamil12@kamil.pl"
+}, {
+  "personBooks" : [ ],
+  "id" : 13,
+  "username" : "test",
+  "password" : "test",
+  "firstName" : "test",
+  "secondName" : "test",
+  "email" : "kamil13@kamil.pl"
+}, {
+  "personBooks" : [ ],
+  "id" : 14,
+  "username" : "kamil2k",
+  "password" : "1234",
+  "firstName" : "Kamil",
+  "secondName" : "Kozłowski",
+  "email" : "kamil14@kamil.pl"
 }, {
   "personBooks" : [ ],
   "id" : 15,
@@ -161,6 +117,13 @@
   "password" : "a",
   "firstName" : "a",
   "secondName" : "a",
-  "role" : null,
   "email" : "a@a"
+}, {
+  "personBooks" : [ ],
+  "id" : 16,
+  "username" : "przem",
+  "password" : "przem",
+  "firstName" : "P",
+  "secondName" : "W",
+  "email" : "wender@gmail.com"
 } ]

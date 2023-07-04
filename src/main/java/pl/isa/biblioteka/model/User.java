@@ -1,14 +1,17 @@
 package pl.isa.biblioteka.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import org.springframework.stereotype.Component;
-import pl.isa.biblioteka.book.Book;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 @Entity
+@AllArgsConstructor
+@Builder
 @Table(name = "users")
 public class User {
 
@@ -28,9 +31,6 @@ public class User {
     private String secondName;
     @Column(name = "role", nullable = true)
     private String role;
-
-    //OneToMeny
-//    @Transient
     @Column(name = "email", unique = false, nullable = false)
     private String email;
 
@@ -125,7 +125,6 @@ public class User {
     public List<Book> getPersonBooks() {
         return personBooks;
     }
-
 
     public void setPersonBooks(List<Book> personBooks) {
         this.personBooks = personBooks;

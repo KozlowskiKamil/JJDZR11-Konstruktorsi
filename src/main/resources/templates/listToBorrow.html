@@ -39,7 +39,7 @@
                                 <td th:text="|*{category} |"></td>
                                 <td th:text="*{state}? 'Dostępna' : 'Niedostępna'"></td>
                                 <td th:if="*{state != false}">
-                                    <a th:href="@{/myBookBorrowByName(name=${book.title})}" class="btn btn-success btn-sm ms-2">Wypożycz</a>
+                                    <a th:href="@{/myBookBorrowByName(id=${book.id})}" class="btn btn-success btn-sm ms-2">Wypożycz</a>
                                 </td>
                             </tr>
                             </tbody>

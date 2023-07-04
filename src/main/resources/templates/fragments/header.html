@@ -1,7 +1,7 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <!--
-* login
+* logout
 -->
 
 <header th:fragment="login" id="header" class="fixed-top">
@@ -27,8 +27,8 @@
                     <a class="nav-link scrollto me-1" th:href="@{/#team}">Zespół</a>
                 </li>
             </ul>
-            <div style="color: yellow" th:if="${param.error}">Niewłaściwy login lub hasło</div>
-            <div style="color: yellow" th:if="${param.logout}">Zostałeś wylogowany</div>
+            <div style="color: khaki; font-weight: bold; font-size: large" th:if="${param.error}">Niewłaściwy login lub hasło</div>
+            <div style="color: khaki; font-weight: bold; font-size: large" th:if="${param.logout}">Zostałeś wylogowany</div>
             <form th:action="@{/}" method="post" class="d-flex ms-3">
                 <input class="form-control me-2" type="text" name="user" placeholder="Login" aria-label="Login">
                 <input class="form-control me-2" type="password" name="password" placeholder="Hasło" aria-label="Hasło">
@@ -40,7 +40,7 @@
 </header>
 
 <!--
-* logout
+* login
 -->
 
 <header th:fragment="logout" id="header" class="fixed-top">
@@ -56,11 +56,8 @@
                 <li class="nav-item">
                     <a class="nav-link scrollto me-1" th:href="@{/#start}">Start</a>
                 </li>
-                <li class="nav-item">
+                <li sec:authorize="hasRole('ROLE_USER')" class="nav-item">
                     <a class="nav-link scrollto me-1" th:href="@{/#service}">Top</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link scrollto me-1" th:href="@{/}">Powrót</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link scrollto me-1" th:href="@{/search}">Wyszukiwanie zaawansowane</a>

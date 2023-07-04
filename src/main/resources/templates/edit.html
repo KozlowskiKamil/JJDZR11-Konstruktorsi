@@ -27,6 +27,9 @@
             <form th:action="@{/edit/{id}(id=*{id})}" method="post" th:object="${personDTO}" style="width: fit-content"
                   class="border border-primary rounded-4 bg-light p-4 shadow-lg p-3 mb-5 bg-white rounded">
                 <div class="mb-3">
+                    <input type="hidden" th:field="*{id}">
+                </div>
+                <div class="mb-3">
                     <label for="username" class="form-label text-primary">Username</label>
                     <input th:field="*{username}" type="text" class="form-control form-control-primary" id="username"
                            placeholder="username"

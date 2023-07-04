@@ -1,11 +1,11 @@
 package pl.isa.biblioteka.mappers;
 
-import pl.isa.biblioteka.dto.CustomUserDetails;
-import pl.isa.biblioteka.dto.UserDto;
-import pl.isa.biblioteka.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import pl.isa.biblioteka.dto.CustomUserDetails;
+import pl.isa.biblioteka.dto.UserDto;
+import pl.isa.biblioteka.model.User;
 
 @Component
 public class UserMapper {

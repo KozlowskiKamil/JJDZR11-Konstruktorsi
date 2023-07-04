@@ -24,13 +24,13 @@
                                 <th scope="col">Zwróć książkę</th>
                             </tr>
                             </thead>
-                            <tbody th:each="currentUser : ${users}" th:if="${currentUser.username} == ${user}">
-                            <tr th:each="book : ${currentUser.personBooks}" th:object="${book}">
+                            <tbody >
+                            <tr th:each="book : ${books}" th:object="${book}">
                                 <td th:text="*{title}"></td>
                                 <td th:text="*{author}"></td>
                                 <td th:text="*{category}"></td>
                                 <td>
-                                    <a th:href="@{/myBooksReturnByName(name=${book.title})}" class="btn btn-warning btn-sm ms-2">Zwróć</a>
+                                    <a th:href="@{/myBooksReturnByName(id=${book.id})}" class="btn btn-warning btn-sm ms-2">Zwróć</a>
                                 </td>
                             </tr>
                             </tbody>
